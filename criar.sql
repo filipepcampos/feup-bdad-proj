@@ -19,12 +19,16 @@ CREATE TABLE OfertaEmprego (
         localizacaoPais varchar(255),
         localizacaoCidade varchar(255),
         localizacaoEndereco varchar(255),
-        CONSTRAINT localizacaoFK FOREIGN KEY(localizacaoPais, localizacaoCidade, localizacaoEndereco) REFERENCES Localizacao(pais,cidade,endereco)
+        CONSTRAINT localizacaoFK 
+			FOREIGN KEY(localizacaoPais, localizacaoCidade, localizacaoEndereco) 
+			REFERENCES Localizacao(pais,cidade,endereco)
+			ON DELETE SET NULL ON UPDATE SET NULL
 );
 
 DROP TABLE IF EXISTS Candidatura;
 CREATE TABLE Candidatura(
-        idOferta int CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id),
+        idOferta int CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
+				ON DELETE CASCADE ON UPDATE CASCADE,
         idJogador int, -- REFERENCES 
         dataCandidatura int CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura > Oferta.dataCriacao
         CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
@@ -47,7 +51,8 @@ CREATE TABLE Competicao(
 DROP TABLE IF EXISTS Participacao;
 CREATE TABLE Participacao(
         idJogador int, -- REFERENCES
-        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id),
+        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
+				ON DELETE CASCADE ON UPDATE CASCADE,
         dataInscricao int CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
         posicao int CONSTRAINT posicaoNotNull NOT NULL,
         mudancaRating int,
@@ -57,6 +62,7 @@ CREATE TABLE Participacao(
 DROP TABLE IF EXISTS Contribuicao;
 CREATE TABLE Contribuicao(
         idOrganizador int, -- REFERENCES ...,
-        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id),
+        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
+				ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT ContribuicaoPK PRIMARY KEY(idOrganizador, idCompeticao)
 );
