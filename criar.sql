@@ -10,12 +10,12 @@ CREATE TABLE Localizacao (
 
 DROP TABLE IF EXISTS OfertaEmprego;
 CREATE TABLE OfertaEmprego (
-        id INT CONSTRAINT OfertaEmpregoPK PRIMARY KEY,
+        id INTEGER CONSTRAINT OfertaEmpregoPK PRIMARY KEY,
         posicao varchar(255) CONSTRAINT posicaoNotNull NOT NULL,
         informacao varChar(4096),
         salario double CONSTRAINT salarioPositivo CHECK(salario>=0),
-        dataCriacao int CONSTRAINT dataCriacaoNotNull NOT NULL,
-        idEmpresa int, -- REFERENCES ...
+        dataCriacao INTEGER CONSTRAINT dataCriacaoNotNull NOT NULL,
+        idEmpresa INTEGER, -- REFERENCES ...
         localizacaoPais varchar(255),
         localizacaoCidade varchar(255),
         localizacaoEndereco varchar(255),
@@ -27,42 +27,42 @@ CREATE TABLE OfertaEmprego (
 
 DROP TABLE IF EXISTS Candidatura;
 CREATE TABLE Candidatura(
-        idOferta int CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
+        idOferta INTEGER CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        idJogador int, -- REFERENCES 
-        dataCandidatura int CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura > Oferta.dataCriacao
+        idJogador INTEGER, -- REFERENCES 
+        dataCandidatura INTEGER CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura > Oferta.dataCriacao
         CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
 );
 
 DROP TABLE IF EXISTS Competicao;
 CREATE TABLE Competicao(
-        id int CONSTRAINT CompeticaoPK PRIMARY KEY,
+        id INTEGER CONSTRAINT CompeticaoPK PRIMARY KEY,
         titulo varchar(255) CONSTRAINT tituloNotNull NOT NULL,
         descricao varchar(4096),
         dificuldadeMedia double CONSTRAINT dificuldadeMediaNotNull NOT NULL
 								CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10), -- Calcular a dificuldadeMedia e confirmar o valor?
-        datetimeInicio int CONSTRAINT datetimeInicioNotNull NOT NULL, -- N sei se é boa ideia guardar isto num int mas por agora wtv
-        datetimeFim int CONSTRAINT datetimeFimNotNull NOT NULL,
-        numParticipantes int CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
+        datetimeInicio INTEGER CONSTRAINT datetimeInicioNotNull NOT NULL, -- N sei se é boa ideia guardar isto num INTEGER mas por agora wtv
+        datetimeFim INTEGER CONSTRAINT datetimeFimNotNull NOT NULL,
+        numParticipantes INTEGER CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
         premio varchar(255), -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
 
 DROP TABLE IF EXISTS Participacao;
 CREATE TABLE Participacao(
-        idJogador int, -- REFERENCES
-        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
+        idJogador INTEGER, -- REFERENCES
+        idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        dataInscricao int CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
-        posicao int CONSTRAINT posicaoNotNull NOT NULL,
-        mudancaRating int,
+        dataInscricao INTEGER CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
+        posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
+        mudancaRating INTEGER,
         CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
 );
 
 DROP TABLE IF EXISTS Contribuicao;
 CREATE TABLE Contribuicao(
-        idOrganizador int, -- REFERENCES ...,
-        idCompeticao int CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
+        idOrganizador INTEGER, -- REFERENCES ...,
+        idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT ContribuicaoPK PRIMARY KEY(idOrganizador, idCompeticao)
 );
