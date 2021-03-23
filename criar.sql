@@ -2,23 +2,23 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
-        pais varchar(255) CONSTRAINT paisNotNull NOT NULL,
-        cidade varchar(255) CONSTRAINT cidadeNotNull NOT NULL,
-        endereco varchar(255) CONSTRAINT enderecoNotNull NOT NULL,
+        pais VARCHAR(255) CONSTRAINT paisNotNull NOT NULL,
+        cidade VARCHAR(255) CONSTRAINT cidadeNotNull NOT NULL,
+        endereco VARCHAR(255) CONSTRAINT enderecoNotNull NOT NULL,
         CONSTRAINT LocalizacaoPK PRIMARY KEY(pais, cidade, endereco)
 );
 
 DROP TABLE IF EXISTS OfertaEmprego;
 CREATE TABLE OfertaEmprego (
         id INTEGER CONSTRAINT OfertaEmpregoPK PRIMARY KEY,
-        posicao varchar(255) CONSTRAINT posicaoNotNull NOT NULL,
-        informacao varChar(4096),
-        salario double CONSTRAINT salarioPositivo CHECK(salario>=0),
+        posicao VARCHAR(255) CONSTRAINT posicaoNotNull NOT NULL,
+        informacao VARCHAR(4096),
+        salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
         dataCriacao INTEGER CONSTRAINT dataCriacaoNotNull NOT NULL,
         idEmpresa INTEGER, -- REFERENCES ...
-        localizacaoPais varchar(255),
-        localizacaoCidade varchar(255),
-        localizacaoEndereco varchar(255),
+        localizacaoPais VARCHAR(255),
+        localizacaoCidade VARCHAR(255),
+        localizacaoEndereco VARCHAR(255),
         CONSTRAINT localizacaoFK 
 			FOREIGN KEY(localizacaoPais, localizacaoCidade, localizacaoEndereco) 
 			REFERENCES Localizacao(pais,cidade,endereco)
@@ -37,14 +37,14 @@ CREATE TABLE Candidatura(
 DROP TABLE IF EXISTS Competicao;
 CREATE TABLE Competicao(
         id INTEGER CONSTRAINT CompeticaoPK PRIMARY KEY,
-        titulo varchar(255) CONSTRAINT tituloNotNull NOT NULL,
-        descricao varchar(4096),
-        dificuldadeMedia double CONSTRAINT dificuldadeMediaNotNull NOT NULL
+        titulo VARCHAR(255) CONSTRAINT tituloNotNull NOT NULL,
+        descricao VARCHAR(4096),
+        dificuldadeMedia REAL CONSTRAINT dificuldadeMediaNotNull NOT NULL
 								CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10), -- Calcular a dificuldadeMedia e confirmar o valor?
         datetimeInicio INTEGER CONSTRAINT datetimeInicioNotNull NOT NULL, -- N sei se é boa ideia guardar isto num INTEGER mas por agora wtv
         datetimeFim INTEGER CONSTRAINT datetimeFimNotNull NOT NULL,
         numParticipantes INTEGER CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
-        premio varchar(255), -- 'Descrição do prémio'
+        premio VARCHAR(255), -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
 
