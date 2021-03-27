@@ -1,3 +1,5 @@
+.headers on
+.mode columns
 PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Localizacao;
@@ -30,7 +32,7 @@ CREATE TABLE Candidatura(
         idOferta INTEGER CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
         idJogador INTEGER, -- REFERENCES 
-        dataCandidatura INTEGER CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura > Oferta.dataCriacao
+        dataCandidatura INTEGER CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura >= Oferta.dataCriacao
         CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
 );
 
@@ -39,11 +41,11 @@ CREATE TABLE Competicao(
         id INTEGER CONSTRAINT CompeticaoPK PRIMARY KEY,
         titulo VARCHAR(255) CONSTRAINT tituloNotNull NOT NULL,
         descricao VARCHAR(4096),
-        dificuldadeMedia REAL CONSTRAINT dificuldadeMediaNotNull NOT NULL
-								CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10), -- Calcular a dificuldadeMedia e confirmar o valor?
+        dificuldadeMedia REAL -- CONSTRAINT dificuldadeMediaNotNull NOT NULL
+                        CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10),
         datetimeInicio INTEGER CONSTRAINT datetimeInicioNotNull NOT NULL, -- N sei se é boa ideia guardar isto num INTEGER mas por agora wtv
         datetimeFim INTEGER CONSTRAINT datetimeFimNotNull NOT NULL,
-        numParticipantes INTEGER CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
+        numParticipantes INTEGER, -- CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
         premio VARCHAR(255), -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
