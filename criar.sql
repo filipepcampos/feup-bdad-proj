@@ -4,10 +4,11 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
-        pais VARCHAR(255),
-        cidade VARCHAR(255) ,
-        endereco VARCHAR(255),
-        CONSTRAINT LocalizacaoPK PRIMARY KEY(pais, cidade, endereco)
+        id INTEGER CONSTRAINT LocalizacaoPK PRIMARY KEY,
+        pais VARCHAR(255) CONSTRAINT paisNotNull NOT NULL,
+        cidade VARCHAR(255) CONSTRAINT cidadeNotNull NOT NULL,
+        endereco VARCHAR(255) CONSTRAINT enderecoNotNull NOT NULL,
+        CONSTRAINT LocalizacaoUnique UNIQUE(pais, cidade, endereco)
 );
 
 DROP TABLE IF EXISTS OfertaEmprego;
@@ -17,14 +18,8 @@ CREATE TABLE OfertaEmprego (
         informacao VARCHAR(4096),
         salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
         dataCriacao INTEGER CONSTRAINT dataCriacaoNotNull NOT NULL,
-        idEmpresa INTEGER, -- REFERENCES ...
-        localizacaoPais VARCHAR(255),
-        localizacaoCidade VARCHAR(255),
-        localizacaoEndereco VARCHAR(255),
-        CONSTRAINT localizacaoFK 
-			FOREIGN KEY(localizacaoPais, localizacaoCidade, localizacaoEndereco) 
-			REFERENCES Localizacao(pais,cidade,endereco)
-			ON DELETE SET NULL ON UPDATE SET NULL
+        idEmpresa INTEGER CONSTRAINT idEmpresaNotNull NOT NULL, -- REFERENCES ...
+        localizacaoId INT CONSTRAINT localizacaoFK REFERENCES Localizacao(id) ON DELETE SET NULL ON UPDATE SET NULL
 );
 
 DROP TABLE IF EXISTS Candidatura;
