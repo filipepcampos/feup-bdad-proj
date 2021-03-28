@@ -4,9 +4,9 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
-        pais VARCHAR(255) CONSTRAINT paisNotNull NOT NULL,
-        cidade VARCHAR(255) CONSTRAINT cidadeNotNull NOT NULL,
-        endereco VARCHAR(255) CONSTRAINT enderecoNotNull NOT NULL,
+        pais VARCHAR(255),
+        cidade VARCHAR(255) ,
+        endereco VARCHAR(255),
         CONSTRAINT LocalizacaoPK PRIMARY KEY(pais, cidade, endereco)
 );
 
