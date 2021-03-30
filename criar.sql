@@ -67,17 +67,17 @@ CREATE TABLE Contribuicao(
 DROP TABLE IF EXISTS Curso;
 CREATE TABLE Curso (
         id INTEGER PRIMARY KEY,
-        titulo VARCHAR(255),
-        descricao VARCHAR(255),
-        nivel VARCHAR(255),
+        titulo TEXT,
+        descricao TEXT,
+        nivel TEXT,
         preco INTEGER
 );
 
 DROP TABLE IF EXISTS Problema;
 CREATE TABLE Problema (
         id INTEGER PRIMARY KEY,
-        titulo VARCHAR(255),
-        descricao VARCHAR(255),
+        titulo TEXT,
+        descricao TEXT,
         dificuldade INTEGER
 );
 
@@ -85,8 +85,8 @@ DROP TABLE IF EXISTS Informacao;
 CREATE TABLE Informacao (
         idCurso INTEGER REFERENCES Curso(id),
 	idJogador INTEGER, -- REFERENCES
-	dataInicio INTEGER,
-	dataFim INTEGER,
+	dataInicio TEXT,
+	dataFim TEXT,
 	nota INTEGER,
 	PRIMARY KEY(idCurso, idJogador)
 );
@@ -94,15 +94,15 @@ CREATE TABLE Informacao (
 DROP TABLE IF EXISTS Aula;
 CREATE TABLE Aula (
         id INTEGER PRIMARY KEY,
-	texto VARCHAR(255),
-	videoURL VARCHAR(255),
+	texto TEXT,
+	videoURL TEXT,
 	idCurso INTEGER REFERENCES Curso(id)
 );
 
 DROP TABLE IF EXISTS ProblemaComSolucao;
 CREATE TABLE ProblemaComSolucao (
         idProblema INTEGER PRIMARY KEY REFERENCES Problema(id),
-        solucao VARCHAR(255)
+        solucao TEXT
 );
 
 DROP TABLE IF EXISTS Desafio;
@@ -110,7 +110,7 @@ CREATE TABLE Desafio (
         id INTEGER PRIMARY KEY,
 	idDesafiador INTEGER, -- REFERENCES
 	idDesafiado INTEGER, -- REFERENCES
-	descricao VARCHAR(255)
+	descricao TEXT
 );
 
 DROP TABLE IF EXISTS ProblemaCompeticao;
