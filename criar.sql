@@ -5,19 +5,19 @@ PRAGMA foreign_keys = ON;
 DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
         id INTEGER CONSTRAINT LocalizacaoPK PRIMARY KEY,
-        pais VARCHAR(255) CONSTRAINT paisNotNull NOT NULL,
-        cidade VARCHAR(255) CONSTRAINT cidadeNotNull NOT NULL,
-        endereco VARCHAR(255) CONSTRAINT enderecoNotNull NOT NULL,
+        pais TEXT CONSTRAINT paisNotNull NOT NULL,
+        cidade TEXT CONSTRAINT cidadeNotNull NOT NULL,
+        endereco TEXT CONSTRAINT enderecoNotNull NOT NULL,
         CONSTRAINT LocalizacaoUnique UNIQUE(pais, cidade, endereco)
 );
 
 DROP TABLE IF EXISTS OfertaEmprego;
 CREATE TABLE OfertaEmprego (
         id INTEGER CONSTRAINT OfertaEmpregoPK PRIMARY KEY,
-        posicao VARCHAR(255) CONSTRAINT posicaoNotNull NOT NULL,
-        informacao VARCHAR(4096),
+        posicao TEXT CONSTRAINT posicaoNotNull NOT NULL,
+        informacao TEXT,
         salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
-        dataCriacao INTEGER CONSTRAINT dataCriacaoNotNull NOT NULL,
+        dataCriacao TEXT CONSTRAINT dataCriacaoNotNull NOT NULL,
         idEmpresa INTEGER CONSTRAINT idEmpresaNotNull NOT NULL, -- REFERENCES ...
         localizacaoId INT CONSTRAINT localizacaoFK REFERENCES Localizacao(id) ON DELETE SET NULL ON UPDATE SET NULL
 );
@@ -27,21 +27,21 @@ CREATE TABLE Candidatura(
         idOferta INTEGER CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
         idJogador INTEGER, -- REFERENCES 
-        dataCandidatura INTEGER CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura >= Oferta.dataCriacao
+        dataCandidatura TEXT CONSTRAINT dataCandidaturaNotNull NOT NULL, -- Check dataCandidatura >= Oferta.dataCriacao
         CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
 );
 
 DROP TABLE IF EXISTS Competicao;
 CREATE TABLE Competicao(
         id INTEGER CONSTRAINT CompeticaoPK PRIMARY KEY,
-        titulo VARCHAR(255) CONSTRAINT tituloNotNull NOT NULL,
-        descricao VARCHAR(4096),
+        titulo TEXT CONSTRAINT tituloNotNull NOT NULL,
+        descricao TEXT,
         dificuldadeMedia REAL -- CONSTRAINT dificuldadeMediaNotNull NOT NULL
                         CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10),
-        datetimeInicio INTEGER CONSTRAINT datetimeInicioNotNull NOT NULL, -- N sei se é boa ideia guardar isto num INTEGER mas por agora wtv
-        datetimeFim INTEGER CONSTRAINT datetimeFimNotNull NOT NULL,
+        datetimeInicio TEXT CONSTRAINT datetimeInicioNotNull NOT NULL,
+        datetimeFim TEXT CONSTRAINT datetimeFimNotNull NOT NULL,
         numParticipantes INTEGER, -- CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
-        premio VARCHAR(255), -- 'Descrição do prémio'
+        premio TEXT, -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE Participacao(
         idJogador INTEGER, -- REFERENCES
         idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        dataInscricao INTEGER CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
+        dataInscricao TEXT CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
         posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
         mudancaRating INTEGER,
         CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
