@@ -63,3 +63,73 @@ CREATE TABLE Contribuicao(
 				ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT ContribuicaoPK PRIMARY KEY(idOrganizador, idCompeticao)
 );
+
+DROP TABLE IF EXISTS Curso;
+CREATE TABLE Curso (
+        id INTEGER PRIMARY KEY,
+        titulo VARCHAR(255),
+        descricao VARCHAR(255),
+        nivel VARCHAR(255),
+        preco INTEGER
+);
+
+DROP TABLE IF EXISTS Problema;
+CREATE TABLE Problema (
+        id INTEGER PRIMARY KEY,
+        titulo VARCHAR(255),
+        descricao VARCHAR(255),
+        dificuldade INTEGER
+);
+
+DROP TABLE IF EXISTS Informacao;
+CREATE TABLE Informacao (
+        idCurso INTEGER REFERENCES Curso(id),
+	idJogador INTEGER, -- REFERENCES
+	dataInicio INTEGER,
+	dataFim INTEGER,
+	nota INTEGER,
+	PRIMARY KEY(idCurso, idJogador)
+);
+
+DROP TABLE IF EXISTS Aula;
+CREATE TABLE Aula (
+        id INTEGER PRIMARY KEY,
+	texto VARCHAR(255),
+	videoURL VARCHAR(255),
+	idCurso INTEGER REFERENCES Curso(id)
+);
+
+DROP TABLE IF EXISTS ProblemaComSolucao;
+CREATE TABLE ProblemaComSolucao (
+        idProblema INTEGER PRIMARY KEY REFERENCES Problema(id),
+        solucao VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS Desafio;
+CREATE TABLE Desafio (
+        id INTEGER PRIMARY KEY,
+	idDesafiador INTEGER, -- REFERENCES
+	idDesafiado INTEGER, -- REFERENCES
+	descricao VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS ProblemaCompeticao;
+CREATE TABLE ProblemaCompeticao (
+        idProblema REFERENCES Problema(id),
+	idCompeticao REFERENCES Competicao(id),
+	PRIMARY KEY(idProblema, idCompeticao)
+);
+
+DROP TABLE IF EXISTS ProblemaAula;
+CREATE TABLE ProblemaAula (
+        idProblema REFERENCES Problema(id),
+	idAula REFERENCES Aula(id),
+	PRIMARY KEY(idProblema, idAula)
+);
+
+DROP TABLE IF EXISTS ProblemaDesafio;
+CREATE TABLE ProblemaDesafio (
+        idProblema REFERENCES Problema(id),
+	idDesafio REFERENCES Desafio(id),
+	PRIMARY KEY(idProblema, idDesafio)
+);
