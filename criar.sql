@@ -17,11 +17,9 @@ CREATE TABLE OfertaEmprego (
         posicao TEXT CONSTRAINT posicaoNotNull NOT NULL,
         informacao TEXT,
         salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
-        dataCriacao TEXT 
+        dataCriacao INTEGER
             CONSTRAINT dataCriacaoNotNull NOT NULL
-            CONSTRAINT dataCriacaoFormat CHECK (dataCriacao LIKE "____-__-__")
-            CONSTRAINT dataCriacaoValue CHECK (dataCriacao IS strftime("%Y-%m-%d",dataCriacao)) -- Filter out "2021-01-99", for example
-            CONSTRAINT dataCriacaoNotFuture CHECK (dataCriacao <= strftime("%Y-%m-%d")),
+            CONSTRAINT dataCriacaoNotFuture CHECK (dataCriacao <= strftime("%s")),
         idEmpresa INTEGER CONSTRAINT idEmpresaNotNull NOT NULL, -- REFERENCES ...
         localizacaoId INT CONSTRAINT localizacaoFK REFERENCES Localizacao(id) ON DELETE SET NULL ON UPDATE SET NULL
 );
@@ -31,11 +29,9 @@ CREATE TABLE Candidatura(
         idOferta INTEGER CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
         idJogador INTEGER, -- REFERENCES 
-        dataCandidatura TEXT 
+        dataCandidatura INTEGER
             CONSTRAINT dataCandidaturaNotNull NOT NULL -- Check dataCandidatura >= Oferta.dataCriacao
-            CONSTRAINT dataCandidaturaFormat CHECK (dataCandidatura LIKE "____-__-__")
-            CONSTRAINT dataCandidaturaValue CHECK (dataCandidatura IS strftime("%Y-%m-%d",dataCandidatura)) -- Filter out "2021-01-99", for example
-            CONSTRAINT dataCandidaturaNotFuture CHECK (dataCandidatura <= strftime("%Y-%m-%d")),
+            CONSTRAINT dataCandidaturaNotFuture CHECK (dataCandidatura <= strftime("%s")),
         CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
 );
 
@@ -46,14 +42,10 @@ CREATE TABLE Competicao(
         descricao TEXT,
         dificuldadeMedia REAL -- CONSTRAINT dificuldadeMediaNotNull NOT NULL
                         CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10),
-        datetimeInicio TEXT 
-            CONSTRAINT datetimeInicioNotNull NOT NULL
-            CONSTRAINT datetimeInicioFormat CHECK (datetimeInicio LIKE "____-__-__ __:__:__")
-            CONSTRAINT datetimeInicioValue CHECK (datetimeInicio IS strftime("%Y-%m-%d %H:%M:%S", datetimeInicio)),
-        datetimeFim TEXT 
-            CONSTRAINT datetimeFimNotNull NOT NULL
-            CONSTRAINT datetimeFimFormat CHECK (datetimeFim LIKE "____-__-__ __:__:__")
-            CONSTRAINT datetimeFimValue CHECK (datetimeFim IS strftime("%Y-%m-%d %H:%M:%S", datetimeFim)),
+        datetimeInicio INTEGER 
+            CONSTRAINT datetimeInicioNotNull NOT NULL,
+        datetimeFim INTEGER 
+            CONSTRAINT datetimeFimNotNull NOT NULL,
         numParticipantes INTEGER, -- CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
         premio TEXT, -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
@@ -64,11 +56,9 @@ CREATE TABLE Participacao(
         idJogador INTEGER, -- REFERENCES
         idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        dataInscricao TEXT  -- Verificar se inscrição foi antes do inicio da competição
+        dataInscricao INTEGER  -- Verificar se inscrição foi antes do inicio da competição
             CONSTRAINT dataInscricaoNotNull NOT NULL
-            CONSTRAINT dataInscricaoFormat CHECK (dataInscricao LIKE "____-__-__ __:__:__")
-            CONSTRAINT dataInscricaoValue CHECK (dataInscricao IS strftime("%Y-%m-%d %H:%M:%S",dataInscricao)) 
-            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%Y-%m-%d %H:%M:%S")),
+            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%s")),
         posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
         mudancaRating INTEGER,
         CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
@@ -103,14 +93,12 @@ DROP TABLE IF EXISTS Informacao;
 CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
 	idJogador INTEGER, -- REFERENCES
-	dataInicio TEXT
+	dataInicio INTEGER
         CONSTRAINT dataInicioNotNull NOT NULL
-        CONSTRAINT dataInicioFormat CHECK (dataInicio LIKE "____-__-__")
-        CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%Y-%m-%d",dataInicio)),
-	dataFim TEXT
+        CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%s",dataInicio)),
+	dataFim INTEGER
         CONSTRAINT dataFimNotNull NOT NULL
-        CONSTRAINT dataFimFormat CHECK (dataFim LIKE "____-__-__")
-        CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%Y-%m-%d",dataFim)),
+        CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%s",dataFim)),
 	PRIMARY KEY(idCurso, idJogador)
 );
 
