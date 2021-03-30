@@ -49,13 +49,11 @@ CREATE TABLE Competicao(
         datetimeInicio TEXT 
             CONSTRAINT datetimeInicioNotNull NOT NULL
             CONSTRAINT datetimeInicioFormat CHECK (datetimeInicio LIKE "____-__-__ __:__:__")
-            CONSTRAINT datetimeInicioValue CHECK (datetimeInicio IS strftime("%Y-%m-%d %H:%m:%s", datetimeInicio))
-            CONSTRAINT datetimeInicioNotFuture CHECK (datetimeInicio <= strftime("%Y-%m-%d %H:%m:%s")),
+            CONSTRAINT datetimeInicioValue CHECK (datetimeInicio IS strftime("%Y-%m-%d %H:%M:%S", datetimeInicio)),
         datetimeFim TEXT 
             CONSTRAINT datetimeFimNotNull NOT NULL
             CONSTRAINT datetimeFimFormat CHECK (datetimeFim LIKE "____-__-__ __:__:__")
-            CONSTRAINT datetimeFimValue CHECK (datetimeFim IS strftime("%Y-%m-%d %H:%m:%s", datetimeFim))
-            CONSTRAINT datetimeFimNotFuture CHECK (datetimeFim <= strftime("%Y-%m-%d %H:%m:%s")),
+            CONSTRAINT datetimeFimValue CHECK (datetimeFim IS strftime("%Y-%m-%d %H:%M:%S", datetimeFim)),
         numParticipantes INTEGER, -- CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
         premio TEXT, -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
@@ -69,8 +67,8 @@ CREATE TABLE Participacao(
         dataInscricao TEXT  -- Verificar se inscrição foi antes do inicio da competição
             CONSTRAINT dataInscricaoNotNull NOT NULL
             CONSTRAINT dataInscricaoFormat CHECK (dataInscricao LIKE "____-__-__ __:__:__")
-            CONSTRAINT dataInscricaoValue CHECK (dataInscricao IS strftime("%Y-%m-%d %H:%m:%s",dataInscricao)) 
-            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%Y-%m-%d %H:%m:%s")),
+            CONSTRAINT dataInscricaoValue CHECK (dataInscricao IS strftime("%Y-%m-%d %H:%M:%S",dataInscricao)) 
+            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%Y-%m-%d %H:%M:%S")),
         posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
         mudancaRating INTEGER,
         CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
@@ -108,14 +106,11 @@ CREATE TABLE Informacao (
 	dataInicio TEXT
         CONSTRAINT dataInicioNotNull NOT NULL
         CONSTRAINT dataInicioFormat CHECK (dataInicio LIKE "____-__-__")
-        CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%Y-%m-%d",dataInicio))
-        CONSTRAINT dataInicioNotFuture CHECK (dataInicio <= strftime("%Y-%m-%d")),
+        CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%Y-%m-%d",dataInicio)),
 	dataFim TEXT
         CONSTRAINT dataFimNotNull NOT NULL
         CONSTRAINT dataFimFormat CHECK (dataFim LIKE "____-__-__")
-        CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%Y-%m-%d",dataFim))
-        CONSTRAINT dataFimNotFuture CHECK (dataFim <= strftime("%Y-%m-%d")),
-	nota INTEGER,
+        CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%Y-%m-%d",dataFim)),
 	PRIMARY KEY(idCurso, idJogador)
 );
 

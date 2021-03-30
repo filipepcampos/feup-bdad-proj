@@ -26,7 +26,7 @@ INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpre
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
      VALUES (5, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, '2021-02-05', 3, 8);
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, '2021-05-27', 3, 11);
+     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, '2021-03-27', 3, 11);
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
      VALUES (7, 'Remote Frontend Developer', '[Insert information here]', 125000.0, '2021-03-27', 3, NULL);
 
@@ -72,24 +72,24 @@ INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudanc
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 1, "2021-03-27 23:00:00", 4, 0);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 1, "2021-03-27 23:00:00", 5, -20);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 1, "2021-03-27 23:00:00", 2, 200);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 2, "2021-05-17 20:00:00", 2, 300);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 2, "2021-05-17 20:00:00", 1, 400);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 2, "2021-05-17 20:00:00", 3, -10);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 2, "2021-05-17 20:00:00", 4, -50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 3, "2021-06-23 23:00:00", 3, -100);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 3, "2021-06-23 23:00:00", 2, 400);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 3, "2021-06-23 23:00:00", 1, 500);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 4, "2021-07-26 23:00:00", 1, 1000);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 4, "2021-07-26 23:00:00", 2, 0);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 2, "2021-03-17 20:00:00", 2, 300);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 2, "2021-03-17 20:00:00", 1, 400);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 2, "2021-03-17 20:00:00", 3, -10);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 2, "2021-03-17 20:00:00", 4, -50);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 3, "2021-03-23 23:00:00", 3, -100);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 3, "2021-03-23 23:00:00", 2, 400);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 3, "2021-03-23 23:00:00", 1, 500);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 4, "2021-03-26 23:00:00", 1, 1000);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 4, "2021-03-26 23:00:00", 2, 0);
 -- Other --
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 5, "2021-05-06 18:32:22", 1, 50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 5, "2021-05-06 18:32:22", 2, 25);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 5, "2021-05-06 18:32:22", 3, -20);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 5, "2021-03-06 18:32:22", 1, 50);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 5, "2021-03-06 18:32:22", 2, 25);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 5, "2021-03-06 18:32:22", 3, -20);
 --
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 6, "2021-06-26 18:32:22", 3, NULL);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 6, "2021-06-26 12:12:42", 1, NULL);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 6, "2021-06-26 15:57:00", 2, NULL);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 6, "2021-06-26 07:15:39", 4, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 6, "2021-02-26 18:32:22", 3, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 6, "2021-02-26 12:12:42", 1, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 6, "2021-02-26 15:57:00", 2, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 6, "2021-02-26 07:15:39", 4, NULL);
 
 ------ Contribuição ------
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 0);
