@@ -94,11 +94,9 @@ CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
 	idJogador INTEGER, -- REFERENCES
 	dataInicio INTEGER
-        CONSTRAINT dataInicioNotNull NOT NULL
-        CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%s",dataInicio)),
+        CONSTRAINT dataInicioNotNull NOT NULL,
 	dataFim INTEGER
-        CONSTRAINT dataFimNotNull NOT NULL
-        CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%s",dataFim)),
+        CONSTRAINT dataFimNotNull NOT NULL,
 	PRIMARY KEY(idCurso, idJogador)
 );
 
