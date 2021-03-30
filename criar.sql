@@ -66,11 +66,11 @@ CREATE TABLE Participacao(
         idJogador INTEGER, -- REFERENCES
         idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        dataInscricao TEXT CONSTRAINT dataInscricaoNotNull NOT NULL, -- Verificar se inscrição foi antes do inicio da competição
+        dataInscricao TEXT  -- Verificar se inscrição foi antes do inicio da competição
             CONSTRAINT dataInscricaoNotNull NOT NULL
             CONSTRAINT dataInscricaoFormat CHECK (dataInscricao LIKE "____-__-__ __:__:__")
             CONSTRAINT dataInscricaoValue CHECK (dataInscricao IS strftime("%Y-%m-%d %H:%m:%s",dataInscricao)) 
-            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%Y-%m-%d %H:%m:%s"))
+            CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%Y-%m-%d %H:%m:%s")),
         posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
         mudancaRating INTEGER,
         CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
@@ -105,7 +105,7 @@ DROP TABLE IF EXISTS Informacao;
 CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
 	idJogador INTEGER, -- REFERENCES
-	dataInicio TEXT,
+	dataInicio TEXT
         CONSTRAINT dataInicioNotNull NOT NULL
         CONSTRAINT dataInicioFormat CHECK (dataInicio LIKE "____-__-__")
         CONSTRAINT dataInicioValue CHECK (dataInicio IS strftime("%Y-%m-%d",dataInicio))
@@ -114,7 +114,7 @@ CREATE TABLE Informacao (
         CONSTRAINT dataFimNotNull NOT NULL
         CONSTRAINT dataFimFormat CHECK (dataFim LIKE "____-__-__")
         CONSTRAINT dataFimValue CHECK (dataFim IS strftime("%Y-%m-%d",dataFim))
-        CONSTRAINT dataFimNotFuture CHECK (dataFim <= strftime("%Y-%m-%d")),,
+        CONSTRAINT dataFimNotFuture CHECK (dataFim <= strftime("%Y-%m-%d")),
 	nota INTEGER,
 	PRIMARY KEY(idCurso, idJogador)
 );
