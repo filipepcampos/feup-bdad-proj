@@ -1,34 +1,34 @@
 ------ Localização ------
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (0, 'Portugal', 'Porto', 'Rua 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (1, 'Portugal', 'Porto', 'Rua 2');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (2, 'Portugal', 'Porto', 'Rua 3');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (3, 'Portugal', 'Lisboa', 'Rua 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (4, 'Portugal', 'Coimbra', 'Rua 2');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (5, 'United Kingdom', 'Edinburgh', 'Street 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (6, 'United Kingdom', 'Birmingham', 'Street 2');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (7, 'United Kingdom', 'London', 'Street 3');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (8, 'Germany', 'Berlin', 'Straße 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (9, 'Germany', 'Munich', 'Straße 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (10, 'Germany', 'Frankfurt', 'Straße 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (11, 'United States of America', 'Memphis', 'Street 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (12, 'Egypt', 'Memphis', 'Street 1');
-INSERT INTO Localizacao(id, pais, cidade, endereco) VALUES (13, 'Egypt', 'Memphis', 'شارع 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Porto', 'Rua 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Porto', 'Rua 2');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Porto', 'Rua 3');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Lisboa', 'Rua 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Coimbra', 'Rua 2');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('United Kingdom', 'Edinburgh', 'Street 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('United Kingdom', 'Birmingham', 'Street 2');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('United Kingdom', 'London', 'Street 3');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Germany', 'Berlin', 'Straße 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Germany', 'Munich', 'Straße 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Germany', 'Frankfurt', 'Straße 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('United States of America', 'Memphis', 'Street 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Egypt', 'Memphis', 'Street 1');
+INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Egypt', 'Memphis', 'شارع 1');
 
 ------ Oferta Emprego ------
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (0, 'Full stack Developer', 'We offer a good salary', 12000.0, strftime('%s', '2019-08-01'), 2, 1);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (1, 'Software Developer', 'Working here is great!', 50000.0, strftime('%s','2020-11-30'), 1, 4);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId)
-     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s','2021-02-05'), 0, 1);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (4, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2021-03-23'), 1, 13);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (5, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2021-02-05'), 3, 8);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2021-03-27'), 3, 11);
-INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localizacaoId) 
-     VALUES (7, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2021-03-27'), 3, NULL);
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (0, 'Full stack Developer', 'We offer a good salary', 12000.0, strftime('%s', '2019-08-01'), 2, 'Portugal', 'Porto', 'Rua 2');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (1, 'Software Developer', 'Working here is great!', 50000.0, strftime('%s','2020-11-30'), 1, 'Portugal', 'Coimbra', 'Rua 2');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco)
+     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s','2021-02-05'), 0, 'Portugal', 'Porto', 'Rua 2');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (4, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2021-03-23'), 1, 'Egypt', 'Memphis', 'شارع 1');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (5, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2021-02-05'), 3, 'Germany', 'Berlin', 'Straße 1');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2021-03-27'), 3, 'United States of America', 'Memphis', 'Street 1');
+INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
+     VALUES (7, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2021-03-27'), 3, NULL, NULL, NULL);
 
 
 ------ Candidatura ------
