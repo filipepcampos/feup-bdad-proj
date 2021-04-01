@@ -2,6 +2,46 @@
 .mode columns
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS Utilizador;
+CREATE TABLE Utilizador (
+        id INTEGER PRIMARY KEY,
+        username TEXT NOT NULL UNIQUE,
+        nome TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        ultimoLogin DATE NOT NULL
+);
+
+DROP TABLE IF EXISTS Jogador;
+CREATE TABLE Jogador (
+        idUtilizador INTEGER PRIMARY KEY REFERENCES Utilizador(id),
+        rating INTEGER CHECK (rating >= 0), -- Derived attribute
+        numCompeticoes INTEGER CHECK (numCompeticoes >= 0) -- Derived attribute
+);
+
+DROP TABLE IF EXISTS Empresa;
+CREATE TABLE Empresa (
+      idUtilizador INTEGER PRIMARY KEY REFERENCES Utilizador(id),
+      website TEXT,
+      numeroTelefone INTEGER NOT NULL
+);
+
+DROP TABLE IF EXISTS Organizador;
+CREATE TABLE Organizador (
+      idJogador INTEGER PRIMARY KEY REFERENCES Jogador(id),
+      pontosContribuicao INTEGER CHECK (pontosContribuicao >= 0)
+);
+
+DROP TABLE IF EXISTS Mensagem;
+CREATE TABLE Mensagem (
+      id INTEGER PRIMARY KEY,
+      idUtilizadorRemetente INTEGER REFERENCES Utilizador(id) NOT NULL,
+      idUtilizadorDestinatario INTEGER REFERENCES Utilizador(id) NOT NULL,
+      texto TEXT NOT NULL,
+      datetime INTEGER NOT NULL 
+            CONSTRAINT datetimeNotFuture CHECK (datetime <= strftime("%s"))
+);
+
+
 DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
         id INTEGER CONSTRAINT LocalizacaoPK PRIMARY KEY,
@@ -13,69 +53,65 @@ CREATE TABLE Localizacao (
 
 DROP TABLE IF EXISTS OfertaEmprego;
 CREATE TABLE OfertaEmprego (
-        id INTEGER CONSTRAINT OfertaEmpregoPK PRIMARY KEY,
-        posicao TEXT CONSTRAINT posicaoNotNull NOT NULL,
+        id INTEGER PRIMARY KEY,
+        posicao TEXT NOT NULL,
         informacao TEXT,
         salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
-        dataCriacao INTEGER
-            CONSTRAINT dataCriacaoNotNull NOT NULL
+        dataCriacao INTEGER NOT NULL
             CONSTRAINT dataCriacaoNotFuture CHECK (dataCriacao <= strftime("%s")),
-        idEmpresa INTEGER CONSTRAINT idEmpresaNotNull NOT NULL, -- REFERENCES ...
-        localizacaoId INT CONSTRAINT localizacaoFK REFERENCES Localizacao(id) ON DELETE SET NULL ON UPDATE SET NULL
+        idEmpresa INTEGER NOT NULL REFERENCES Empresa(id),
+        localizacaoId INT REFERENCES Localizacao(id)
+                ON DELETE SET NULL ON UPDATE SET NULL
 );
 
 DROP TABLE IF EXISTS Candidatura;
 CREATE TABLE Candidatura(
         idOferta INTEGER CONSTRAINT idOfertaFK REFERENCES OfertaEmprego(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        idJogador INTEGER, -- REFERENCES 
-        dataCandidatura INTEGER
-            CONSTRAINT dataCandidaturaNotNull NOT NULL -- Check dataCandidatura >= Oferta.dataCriacao
+        idJogador INTEGER REFERENCES Jogador(id), 
+        dataCandidatura INTEGER NOT NULL -- Check dataCandidatura >= Oferta.dataCriacao
             CONSTRAINT dataCandidaturaNotFuture CHECK (dataCandidatura <= strftime("%s")),
-        CONSTRAINT CandidaturaPK PRIMARY KEY(idOferta, idJogador)
+        PRIMARY KEY(idOferta, idJogador)
 );
 
 DROP TABLE IF EXISTS Competicao;
 CREATE TABLE Competicao(
-        id INTEGER CONSTRAINT CompeticaoPK PRIMARY KEY,
-        titulo TEXT CONSTRAINT tituloNotNull NOT NULL,
+        id INTEGER PRIMARY KEY,
+        titulo TEXT NOT NULL,
         descricao TEXT,
-        dificuldadeMedia REAL -- CONSTRAINT dificuldadeMediaNotNull NOT NULL
+        dificuldadeMedia REAL -- Derived Attribute
                         CONSTRAINT dificuldadeMediaRange CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10),
-        datetimeInicio INTEGER 
-            CONSTRAINT datetimeInicioNotNull NOT NULL,
-        datetimeFim INTEGER 
-            CONSTRAINT datetimeFimNotNull NOT NULL,
-        numParticipantes INTEGER, -- CONSTRAINT numParticipantesNotNull NOT NULL, -- Verificar isto
+        datetimeInicio INTEGER NOT NULL,
+        datetimeFim INTEGER NOT NULL,
+        numParticipantes INTEGER, -- Derived Attribute
         premio TEXT, -- 'Descrição do prémio'
         CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
 
 DROP TABLE IF EXISTS Participacao;
 CREATE TABLE Participacao(
-        idJogador INTEGER, -- REFERENCES
+        idJogador INTEGER REFERENCES Jogador(id),
         idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        dataInscricao INTEGER  -- Verificar se inscrição foi antes do inicio da competição
-            CONSTRAINT dataInscricaoNotNull NOT NULL
+        dataInscricao INTEGER NOT NULL -- Verificar se inscrição foi antes do inicio da competiçãoNOT NULL
             CONSTRAINT dataInscricaoNotFuture CHECK (dataInscricao <= strftime("%s")),
-        posicao INTEGER CONSTRAINT posicaoNotNull NOT NULL,
+        posicao INTEGER NOT NULL,
         mudancaRating INTEGER,
-        CONSTRAINT ParticipacaoPK PRIMARY KEY(idJogador, idCompeticao) 
+        PRIMARY KEY(idJogador, idCompeticao) 
 );
 
 DROP TABLE IF EXISTS Contribuicao;
 CREATE TABLE Contribuicao(
-        idOrganizador INTEGER, -- REFERENCES ...,
-        idCompeticao INTEGER CONSTRAINT idCompeticaoFK REFERENCES Competicao(id)
+        idOrganizador INTEGER REFERENCES Jogador(id),
+        idCompeticao INTEGER REFERENCES Competicao(id)
 				ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT ContribuicaoPK PRIMARY KEY(idOrganizador, idCompeticao)
+        PRIMARY KEY(idOrganizador, idCompeticao)
 );
 
 DROP TABLE IF EXISTS Curso;
 CREATE TABLE Curso (
         id INTEGER PRIMARY KEY,
-        titulo TEXT,
+        titulo TEXT NOT NULL,
         descricao TEXT,
         nivel TEXT,
         preco INTEGER
@@ -84,15 +120,15 @@ CREATE TABLE Curso (
 DROP TABLE IF EXISTS Problema;
 CREATE TABLE Problema (
         id INTEGER PRIMARY KEY,
-        titulo TEXT,
-        descricao TEXT,
-        dificuldade INTEGER
+        titulo TEXT NOT NULL,
+        descricao TEXT NOT NULL,
+        dificuldade INTEGER NOT NULL
 );
 
 DROP TABLE IF EXISTS Informacao;
 CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
-	idJogador INTEGER, -- REFERENCES
+	idJogador INTEGER REFERENCES Jogador(id),
 	dataInicio INTEGER
         CONSTRAINT dataInicioNotNull NOT NULL,
 	dataFim INTEGER
@@ -105,20 +141,21 @@ CREATE TABLE Aula (
     id INTEGER PRIMARY KEY,
 	texto TEXT,
 	videoURL TEXT,
-	idCurso INTEGER REFERENCES Curso(id)
+	idCurso INTEGER REFERENCES Curso(id) NOT NULL,
+    CONSTRAINT aulaHasContent CHECK(texto IS NOT NULL OR videoURL IS NOT NULL)
 );
 
 DROP TABLE IF EXISTS ProblemaComSolucao;
 CREATE TABLE ProblemaComSolucao (
     idProblema INTEGER PRIMARY KEY REFERENCES Problema(id),
-    solucao TEXT
+    solucao TEXT NOT NULL
 );
 
 DROP TABLE IF EXISTS Desafio;
 CREATE TABLE Desafio (
     id INTEGER PRIMARY KEY,
-	idDesafiador INTEGER, -- REFERENCES
-	idDesafiado INTEGER, -- REFERENCES
+	idDesafiador INTEGER REFERENCES Jogador(id) NOT NULL,
+	idDesafiado INTEGER REFERENCES Jogador(id) NOT NULL,
 	descricao TEXT
 );
 
