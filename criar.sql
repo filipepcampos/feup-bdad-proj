@@ -131,30 +131,34 @@ CREATE TABLE Curso (
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
     descricao TEXT,
-    nivel TEXT,
-    preco INTEGER
+    nivel TEXT CONSTRAINT nivelTipo CHECK (nivel LIKE "Iniciante" OR nivel LIKE "Medio" OR nivel LIKE "Avancado"),
+    preco INTEGER CONSTRAINT precoPositivo CHECK (preco >= 0)
 );
 
 CREATE TABLE Problema (
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
     descricao TEXT NOT NULL,
-    dificuldade INTEGER NOT NULL
+    dificuldade INTEGER NOT NULL,
+    CONSTRAINT dificuldadeIntervalo CHECK (dificuldade >= 0 AND dificuldade <= 10)
 );
 
 CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
-	idJogador INTEGER REFERENCES Jogador(id),
-	dataInicio INTEGER NOT NULL,
-	dataFim INTEGER NOT NULL,
-	PRIMARY KEY(idCurso, idJogador)
+    idJogador INTEGER REFERENCES Jogador(id),
+    dataInicio INTEGER NOT NULL,
+    dataFim INTEGER NOT NULL,
+    nota INTEGER CONSTRAINT notaIntervalo CHECK (nota >= 0 AND nota <= 20),
+    PRIMARY KEY(idCurso, idJogador),
+    CONSTRAINT integridadeTemporal CHECK(dataFim > dataInicio)
+	
 );
 
 CREATE TABLE Aula (
     id INTEGER PRIMARY KEY,
-	texto TEXT,
-	videoURL TEXT,
-	idCurso INTEGER REFERENCES Curso(id) NOT NULL,
+    texto TEXT,
+    videoURL TEXT,
+    idCurso INTEGER REFERENCES Curso(id) NOT NULL,
     CONSTRAINT aulaTemConteudo CHECK(texto IS NOT NULL OR videoURL IS NOT NULL)
 );
 
@@ -165,21 +169,21 @@ CREATE TABLE ProblemaComSolucao (
 
 CREATE TABLE Desafio (
     id INTEGER PRIMARY KEY,
-	idDesafiador INTEGER REFERENCES Jogador(id) NOT NULL,
-	idDesafiado INTEGER REFERENCES Jogador(id) NOT NULL,
-	descricao TEXT
+    idDesafiador INTEGER REFERENCES Jogador(id) NOT NULL,
+    idDesafiado INTEGER REFERENCES Jogador(id) NOT NULL,
+    descricao TEXT NOT NULL
 );
 
 CREATE TABLE ProblemaCompeticao (
     idProblema REFERENCES Problema(id),
-	idCompeticao REFERENCES Competicao(id),
-	PRIMARY KEY(idProblema, idCompeticao)
+    idCompeticao REFERENCES Competicao(id),
+    PRIMARY KEY(idProblema, idCompeticao)
 );
 
 CREATE TABLE ProblemaAula (
     idProblema REFERENCES Problema(id),
-	idAula REFERENCES Aula(id),
-	PRIMARY KEY(idProblema, idAula)
+    idAula REFERENCES Aula(id),
+    PRIMARY KEY(idProblema, idAula)
 );
 
 CREATE TABLE ProblemaDesafio (
