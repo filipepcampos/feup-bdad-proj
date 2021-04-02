@@ -1,3 +1,39 @@
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (0, 'a', 'a', 'a', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (1, 'b', 'b', 'b', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (2, 'c', 'c', 'c', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (3, 'd', 'd', 'd', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (4, 'e', 'e', 'e', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (5, 'f', 'f', 'f', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (6, 'g', 'g', 'g', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (7, 'h', 'h', 'h', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (8, 'i', 'i', 'i', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (9, 'j', 'j', 'j', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (10, 'k', 'k', 'k', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (11, 'l', 'l', 'l', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (12, 'm', 'm', 'm', strftime('%s'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (13, 'n', 'n', 'n', strftime('%s'));
+
+INSERT INTO Jogador(id) VALUES (0);
+INSERT INTO Jogador(id) VALUES (1);
+INSERT INTO Jogador(id) VALUES (2);
+INSERT INTO Jogador(id) VALUES (3);
+INSERT INTO Jogador(id) VALUES (4);
+INSERT INTO Jogador(id) VALUES (5);
+INSERT INTO Jogador(id) VALUES (6);
+INSERT INTO Jogador(id) VALUES (7);
+INSERT INTO Jogador(id) VALUES (8);
+INSERT INTO Jogador(id) VALUES (9);
+INSERT INTO Organizador(id, pontosContribuicao) VALUES (6, 0);
+INSERT INTO Organizador(id, pontosContribuicao) VALUES (7, 0);
+INSERT INTO Organizador(id, pontosContribuicao) VALUES (8, 0);
+INSERT INTO Organizador(id, pontosContribuicao) VALUES (9, 0);
+INSERT INTO Empresa(id, website, numeroTelefone) VALUES (10, NULL, 0);
+INSERT INTO Empresa(id, website, numeroTelefone) VALUES (11, NULL, 0);
+INSERT INTO Empresa(id, website, numeroTelefone) VALUES (12, NULL, 0);
+INSERT INTO Empresa(id, website, numeroTelefone) VALUES (13, NULL, 0);
+
+
+
 ------ Localização ------
 INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Porto', 'Rua 1');
 INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Portugal', 'Porto', 'Rua 2');
@@ -16,19 +52,19 @@ INSERT INTO Localizacao(pais, cidade, endereco) VALUES ('Egypt', 'Memphis', 'ش�
 
 ------ Oferta Emprego ------
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (0, 'Full stack Developer', 'We offer a good salary', 12000.0, strftime('%s', '2019-08-01'), 2, 'Portugal', 'Porto', 'Rua 2');
+     VALUES (0, 'Full stack Developer', 'We offer a good salary', 12000.0, strftime('%s', '2019-08-01'), 10, 'Portugal', 'Porto', 'Rua 2');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (1, 'Software Developer', 'Working here is great!', 50000.0, strftime('%s','2020-11-30'), 1, 'Portugal', 'Coimbra', 'Rua 2');
+     VALUES (1, 'Software Developer', 'Working here is great!', 50000.0, strftime('%s','2020-11-30'), 11, 'Portugal', 'Coimbra', 'Rua 2');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco)
-     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s','2021-02-05'), 0, 'Portugal', 'Porto', 'Rua 2');
+     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s','2021-02-05'), 10, 'Portugal', 'Porto', 'Rua 2');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (4, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2021-03-23'), 1, 'Egypt', 'Memphis', 'شارع 1');
+     VALUES (4, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2021-03-23'), 11, 'Egypt', 'Memphis', 'شارع 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (5, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2021-02-05'), 3, 'Germany', 'Berlin', 'Straße 1');
+     VALUES (5, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2021-02-05'), 13, 'Germany', 'Berlin', 'Straße 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2021-03-27'), 3, 'United States of America', 'Memphis', 'Street 1');
+     VALUES (6, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2021-03-27'), 13, 'United States of America', 'Memphis', 'Street 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (7, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2021-03-27'), 3, NULL, NULL, NULL);
+     VALUES (7, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2021-03-27'), 13, NULL, NULL, NULL);
 
 
 ------ Candidatura ------
@@ -92,14 +128,16 @@ INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudanc
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 6, strftime('%s',"2021-02-26 07:15:39"), 4, NULL);
 
 ------ Contribuição ------
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 0);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 1);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 0);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 1);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 2);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (8, 1);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 2);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 3);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (8, 2);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 3);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 4);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (8, 3);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 4);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (9, 4);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (8, 4);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 5);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 5);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 6);
