@@ -2,7 +2,27 @@
 .mode columns
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS Localizacao;
+DROP TABLE IF EXISTS Candidatura;
+DROP TABLE IF EXISTS OfertaEmprego;
+DROP TABLE IF EXISTS Empresa;
+DROP TABLE IF EXISTS Participacao;
+DROP TABLE IF EXISTS Contribuicao;
+DROP TABLE IF EXISTS ProblemaAula;
+DROP TABLE IF EXISTS ProblemaCompeticao;
+DROP TABLE IF EXISTS ProblemaDesafio;
+DROP TABLE IF EXISTS Competicao;
+DROP TABLE IF EXISTS Organizador;
+DROP TABLE IF EXISTS Curso;
+DROP TABLE IF EXISTS ProblemaComSolucao;
+DROP TABLE IF EXISTS Problema;
+DROP TABLE IF EXISTS Informacao;
+DROP TABLE IF EXISTS Desafio;
+DROP TABLE IF EXISTS Aula;
+DROP TABLE IF EXISTS Mensagem;
+DROP TABLE IF EXISTS Jogador;
 DROP TABLE IF EXISTS Utilizador;
+
 CREATE TABLE Utilizador (
     id INTEGER PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
@@ -12,28 +32,25 @@ CREATE TABLE Utilizador (
         CONSTRAINT ultimoLoginNaoFuturo CHECK (ultimoLogin <= strftime("%s"))
 );
 
-DROP TABLE IF EXISTS Jogador;
+
 CREATE TABLE Jogador (
     id INTEGER PRIMARY KEY REFERENCES Utilizador(id),
     rating INTEGER CONSTRAINT ratingPositivo CHECK (rating >= 0), -- Derived attribute
     numCompeticoes INTEGER CONSTRAINT numCompeticoesPositivo CHECK (numCompeticoes >= 0) -- Derived attribute
 );
 
-DROP TABLE IF EXISTS Empresa;
 CREATE TABLE Empresa (
     id INTEGER PRIMARY KEY REFERENCES Utilizador(id),
     website TEXT,
     numeroTelefone INTEGER NOT NULL
 );
 
-DROP TABLE IF EXISTS Organizador;
 CREATE TABLE Organizador (
     id INTEGER PRIMARY KEY REFERENCES Jogador(id),
     pontosContribuicao INTEGER NOT NULL DEFAULT 0
         CONSTRAINT pontosContribuicaoPositivos CHECK (pontosContribuicao >= 0)
 );
 
-DROP TABLE IF EXISTS Mensagem;
 CREATE TABLE Mensagem (
     id INTEGER PRIMARY KEY,
     idUtilizadorRemetente INTEGER REFERENCES Utilizador(id) NOT NULL,
@@ -43,8 +60,6 @@ CREATE TABLE Mensagem (
             CONSTRAINT datetimeNaoFutura CHECK (datetime <= strftime("%s"))
 );
 
-
-DROP TABLE IF EXISTS Localizacao;
 CREATE TABLE Localizacao (
     pais TEXT,
     cidade TEXT,
@@ -52,7 +67,6 @@ CREATE TABLE Localizacao (
     PRIMARY KEY(pais, cidade, endereco)
 );
 
-DROP TABLE IF EXISTS OfertaEmprego;
 CREATE TABLE OfertaEmprego (
     id INTEGER PRIMARY KEY,
     posicao TEXT NOT NULL,
@@ -73,7 +87,6 @@ CREATE TABLE OfertaEmprego (
             ON DELETE SET NULL ON UPDATE SET NULL
 );
 
-DROP TABLE IF EXISTS Candidatura;
 CREATE TABLE Candidatura(
     idOferta INTEGER REFERENCES OfertaEmprego(id)
             ON DELETE CASCADE ON UPDATE CASCADE,
@@ -83,7 +96,6 @@ CREATE TABLE Candidatura(
     PRIMARY KEY(idOferta, idJogador)
 );
 
-DROP TABLE IF EXISTS Competicao;
 CREATE TABLE Competicao(
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
@@ -97,7 +109,6 @@ CREATE TABLE Competicao(
     CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );
 
-DROP TABLE IF EXISTS Participacao;
 CREATE TABLE Participacao(
     idJogador INTEGER REFERENCES Jogador(id),
     idCompeticao INTEGER REFERENCES Competicao(id)
@@ -109,7 +120,6 @@ CREATE TABLE Participacao(
     PRIMARY KEY(idJogador, idCompeticao) 
 );
 
-DROP TABLE IF EXISTS Contribuicao;
 CREATE TABLE Contribuicao(
     idOrganizador INTEGER REFERENCES Organizador(id),
     idCompeticao INTEGER REFERENCES Competicao(id)
@@ -117,7 +127,6 @@ CREATE TABLE Contribuicao(
     PRIMARY KEY(idOrganizador, idCompeticao)
 );
 
-DROP TABLE IF EXISTS Curso;
 CREATE TABLE Curso (
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
@@ -126,7 +135,6 @@ CREATE TABLE Curso (
     preco INTEGER
 );
 
-DROP TABLE IF EXISTS Problema;
 CREATE TABLE Problema (
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
@@ -134,7 +142,6 @@ CREATE TABLE Problema (
     dificuldade INTEGER NOT NULL
 );
 
-DROP TABLE IF EXISTS Informacao;
 CREATE TABLE Informacao (
     idCurso INTEGER REFERENCES Curso(id),
 	idJogador INTEGER REFERENCES Jogador(id),
@@ -143,7 +150,6 @@ CREATE TABLE Informacao (
 	PRIMARY KEY(idCurso, idJogador)
 );
 
-DROP TABLE IF EXISTS Aula;
 CREATE TABLE Aula (
     id INTEGER PRIMARY KEY,
 	texto TEXT,
@@ -152,13 +158,11 @@ CREATE TABLE Aula (
     CONSTRAINT aulaTemConteudo CHECK(texto IS NOT NULL OR videoURL IS NOT NULL)
 );
 
-DROP TABLE IF EXISTS ProblemaComSolucao;
 CREATE TABLE ProblemaComSolucao (
     idProblema INTEGER PRIMARY KEY REFERENCES Problema(id),
     solucao TEXT NOT NULL
 );
 
-DROP TABLE IF EXISTS Desafio;
 CREATE TABLE Desafio (
     id INTEGER PRIMARY KEY,
 	idDesafiador INTEGER REFERENCES Jogador(id) NOT NULL,
@@ -166,21 +170,18 @@ CREATE TABLE Desafio (
 	descricao TEXT
 );
 
-DROP TABLE IF EXISTS ProblemaCompeticao;
 CREATE TABLE ProblemaCompeticao (
     idProblema REFERENCES Problema(id),
 	idCompeticao REFERENCES Competicao(id),
 	PRIMARY KEY(idProblema, idCompeticao)
 );
 
-DROP TABLE IF EXISTS ProblemaAula;
 CREATE TABLE ProblemaAula (
     idProblema REFERENCES Problema(id),
 	idAula REFERENCES Aula(id),
 	PRIMARY KEY(idProblema, idAula)
 );
 
-DROP TABLE IF EXISTS ProblemaDesafio;
 CREATE TABLE ProblemaDesafio (
     idProblema REFERENCES Problema(id),
 	idDesafio REFERENCES Desafio(id),
