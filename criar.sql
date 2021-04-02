@@ -61,9 +61,9 @@ CREATE TABLE Mensagem (
 );
 
 CREATE TABLE Localizacao (
-    pais TEXT,
-    cidade TEXT,
-    endereco TEXT,
+    pais TEXT NOT NULL,
+    cidade TEXT NOT NULL,
+    endereco TEXT NOT NULL,
     PRIMARY KEY(pais, cidade, endereco)
 );
 
