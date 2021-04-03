@@ -27,7 +27,8 @@ CREATE TABLE Utilizador (
     id INTEGER PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
     nome TEXT NOT NULL,
-    email TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE
+        CONSTRAINT emailFormato CHECK(email LIKE "%@%.%"),
     ultimoLogin INTEGER NOT NULL
         CONSTRAINT ultimoLoginNaoFuturo CHECK (ultimoLogin <= strftime("%s", CURRENT_TIMESTAMP))
 );
@@ -41,7 +42,8 @@ CREATE TABLE Jogador (
 
 CREATE TABLE Empresa (
     id INTEGER PRIMARY KEY REFERENCES Utilizador(id),
-    website TEXT,
+    website TEXT
+        CONSTRAINT websiteFormato CHECK(website LIKE "%.%"),
     numeroTelefone INTEGER NOT NULL
 );
 
@@ -115,7 +117,8 @@ CREATE TABLE Participacao(
             ON DELETE CASCADE ON UPDATE CASCADE,
     dataInscricao INTEGER NOT NULL
         CONSTRAINT dataInscricaoNaoFutura CHECK (dataInscricao <= strftime("%s", CURRENT_TIMESTAMP)),
-    posicao INTEGER NOT NULL,
+    posicao INTEGER NOT NULL
+        CONSTRAINT posicaoMaiorQueZero CHECK(posicao >= 1),
     mudancaRating INTEGER,
     PRIMARY KEY(idJogador, idCompeticao) 
 );
@@ -131,7 +134,7 @@ CREATE TABLE Curso (
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
     descricao TEXT,
-    nivel TEXT CONSTRAINT nivelTipo CHECK (nivel LIKE "Iniciante" OR nivel LIKE "Medio" OR nivel LIKE "Avancado"),
+    nivel TEXT CONSTRAINT nivelTipo CHECK (nivel IN ("Iniciante", "Medio", "Avancado")),
     preco INTEGER CONSTRAINT precoPositivo CHECK (preco >= 0)
 );
 
@@ -157,7 +160,8 @@ CREATE TABLE Informacao (
 CREATE TABLE Aula (
     id INTEGER PRIMARY KEY,
     texto TEXT,
-    videoURL TEXT,
+    videoURL TEXT
+        CONSTRAINT videoURLFormato CHECK(videoURL LIKE "%.%"),
     idCurso INTEGER REFERENCES Curso(id) NOT NULL,
     CONSTRAINT aulaTemConteudo CHECK(texto IS NOT NULL OR videoURL IS NOT NULL)
 );
