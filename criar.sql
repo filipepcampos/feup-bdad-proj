@@ -29,7 +29,7 @@ CREATE TABLE Utilizador (
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     ultimoLogin INTEGER NOT NULL
-        CONSTRAINT ultimoLoginNaoFuturo CHECK (ultimoLogin <= strftime("%s"))
+        CONSTRAINT ultimoLoginNaoFuturo CHECK (ultimoLogin <= strftime("%s", CURRENT_TIMESTAMP))
 );
 
 
@@ -57,7 +57,7 @@ CREATE TABLE Mensagem (
     idUtilizadorDestinatario INTEGER REFERENCES Utilizador(id) NOT NULL,
     texto TEXT NOT NULL,
     datetime INTEGER NOT NULL 
-            CONSTRAINT datetimeNaoFutura CHECK (datetime <= strftime("%s"))
+            CONSTRAINT datetimeNaoFutura CHECK (datetime <= strftime("%s", CURRENT_TIMESTAMP))
 );
 
 CREATE TABLE Localizacao (
@@ -73,7 +73,7 @@ CREATE TABLE OfertaEmprego (
     informacao TEXT,
     salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
     dataCriacao INTEGER NOT NULL
-        CONSTRAINT dataCriacaoNaoFutura CHECK (dataCriacao <= strftime("%s")),
+        CONSTRAINT dataCriacaoNaoFutura CHECK (dataCriacao <= strftime("%s", CURRENT_TIMESTAMP)),
     idEmpresa INTEGER NOT NULL REFERENCES Empresa(id),
     localPais TEXT,
     localCidade TEXT,
@@ -92,7 +92,7 @@ CREATE TABLE Candidatura(
             ON DELETE CASCADE ON UPDATE CASCADE,
     idJogador INTEGER REFERENCES Jogador(id), 
     dataCandidatura INTEGER NOT NULL
-        CONSTRAINT dataCandidaturaNaoFutura CHECK (dataCandidatura <= strftime("%s")),
+        CONSTRAINT dataCandidaturaNaoFutura CHECK (dataCandidatura <= strftime("%s", CURRENT_TIMESTAMP)),
     PRIMARY KEY(idOferta, idJogador)
 );
 
@@ -114,7 +114,7 @@ CREATE TABLE Participacao(
     idCompeticao INTEGER REFERENCES Competicao(id)
             ON DELETE CASCADE ON UPDATE CASCADE,
     dataInscricao INTEGER NOT NULL
-        CONSTRAINT dataInscricaoNaoFutura CHECK (dataInscricao <= strftime("%s")),
+        CONSTRAINT dataInscricaoNaoFutura CHECK (dataInscricao <= strftime("%s", CURRENT_TIMESTAMP)),
     posicao INTEGER NOT NULL,
     mudancaRating INTEGER,
     PRIMARY KEY(idJogador, idCompeticao) 
