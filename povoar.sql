@@ -141,3 +141,100 @@ INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (8, 4);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 5);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 5);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 6);
+
+------ Curso ------
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (0, "MIEIC", NULL, "Avancado", 70);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (1, "Learn how to use SQL", "In this course we will teach you how to use SQL", "Iniciante", 0);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (2, "CS50: Introduction to Computer Science", NULL, "Medio", 0);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (3, "CS50's Web Programming with Python and JavaScript", "12 weeks long", "Avancado", 50);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (4, "Quantitative Methods for Biology" , NULL, "Avancado", 10);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (5, "Learn to code", "We offer you the best material", "Iniciante", 0);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (6, "MIEEC", NULL, "Avancado", 70);
+INSERT INTO Curso(id, titulo, descricao, nivel, preco) VALUES (7, "Intro to JS: Drawing & Animation", NULL, "Medio", 25);
+
+------ Problema ------
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (0, "Problema 0", "Problema 0", 0);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (1, "Factorial recursive", "Create a program that calculates the factorial of a number using recursion", 5);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (2, "Change making problem", "Change making problem", 8);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (3, "Square root", "Implement a method that calculates the square root of a number", 1);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (4, "Problema 4", "Problema 4", 4);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (5, "Implement the serial port", "The serial port is...", 10);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (6, "Problem 6", "Problem 6", 6);
+INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (7, "Biology is cool", "Biology related programming", 7);
+
+------ Informação ------
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 0, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 20);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 1, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 15);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 2, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 0);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 1, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 9.5);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 3, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2020-12-25 16:00:00"), 14);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (4, 4, strftime('%s',"2020-08-13 16:00:00"), strftime('%s',"2020-10-24 19:00:00"), 18);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (5, 2, strftime('%s',"2020-05-17 16:00:00"), strftime('%s',"2020-06-17 16:00:00"), 7);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 5, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 11);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 6, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 19);
+
+------ Aula ------
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (0, "MEST", NULL, 0);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (1, "An introduction to SQL", NULL, 1);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (2, "What is Computer Science?", NULL, 2);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (3, "Getting started with Python", NULL, 3);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (4, "Programming in Biology", NULL, 4);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (5, "Introduction to Programming and Computer Science - Full Course", "https://youtu.be/zOjov-2OZ0E", 5);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (6, NULL, "https://youtu.be/dQw4w9WgXcQ", 6);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (7, NULL, "https://youtu.be/FCMxA3m_Imc", 7);
+
+------ ProblemaComSolução ------
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (0, "Just show up");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (1, "Check the recommended book");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (2, "Implement a backtracking algorithm");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (3, "Documentation exists to help you");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (4, "Solução Problema 4");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (5, "Give up and do something else");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (6, "Problem 6 solution");
+INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (7, "Use the X algorithm to figure out...");
+
+------ Desafio ------
+INSERT INTO Desafio(id, idDesafiador, idDesafiado, descricao) VALUES (0, 0, 1, "Solve the problem before your opponent does");
+INSERT INTO Desafio(id, idDesafiador, idDesafiado, descricao) VALUES (1, 2, 3, "The solution with the better time complexety will win");
+INSERT INTO Desafio(id, idDesafiador, idDesafiado, descricao) VALUES (2, 4, 5, "5 multiple choice questions, player with more correct answers win");
+INSERT INTO Desafio(id, idDesafiador, idDesafiado, descricao) VALUES (3, 6, 7, "Solvee the problem to win the challenge");
+
+------ ProblemaCompetição ------
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (0, 0);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (0, 1);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (1, 0);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (1, 1);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (2, 3);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (3, 2);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (3, 4);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (4, 4);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (5, 5);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (6, 5);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (7, 6);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (2, 6);
+
+
+------ ProblemaAula ------
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (0, 1);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (0, 0);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (1, 1);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (2, 2);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (3, 2);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (4, 3);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (5, 3);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (7, 4);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (6, 4);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (5, 5);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (2, 5);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (6, 6);
+INSERT INTO ProblemaAula(idProblema, idAula) VALUES (7, 7);
+
+------ ProblemaDesafio ------
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (1,0);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (0,1);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (2,2);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (3,2);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (4,2);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (5,2);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (6,2);
+INSERT INTO ProblemaDesafio(idProblema, idDesafio) VALUES (7,3);
