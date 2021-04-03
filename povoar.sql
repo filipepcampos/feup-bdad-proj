@@ -164,24 +164,45 @@ INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (7, "Biology is 
 
 ------ Informação ------
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 0, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 20);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 4, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 17);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 7, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 14);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 2, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 11);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 1, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 15);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 2, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 12);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 3, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 8);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 4, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 19);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 2, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 0);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 5, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 13);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 6, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 14);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 1, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 9.5);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 3, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2020-12-25 16:00:00"), 14);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (4, 4, strftime('%s',"2020-08-13 16:00:00"), strftime('%s',"2020-10-24 19:00:00"), 18);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (5, 2, strftime('%s',"2020-05-17 16:00:00"), strftime('%s',"2020-06-17 16:00:00"), 7);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 5, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 11);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 6, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 19);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 2, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 9);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 3, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 13);
 
 ------ Aula ------
 INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (0, "MEST", NULL, 0);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (1, "An introduction to SQL", NULL, 1);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (2, "What is Computer Science?", NULL, 2);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (3, "Getting started with Python", NULL, 3);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (4, "Programming in Biology", NULL, 4);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (5, "Introduction to Programming and Computer Science - Full Course", "https://youtu.be/zOjov-2OZ0E", 5);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (6, NULL, "https://youtu.be/dQw4w9WgXcQ", 6);
-INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (7, NULL, "https://youtu.be/FCMxA3m_Imc", 7);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (1, "BDAD", NULL, 0);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (2, "LPOO", NULL, 0);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (3, "MNUM(Não existe)", NULL, 0);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (4, "PROG", NULL, 0);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (5, "An introduction to SQL", NULL, 1);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (6, "Conceptual modeling", NULL, 1);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (7, "Creating an sqlite database", NULL, 1);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (8, "Populating an sqlite database", NULL, 1);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (9, "What is Computer Science?", NULL, 2);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (10, "Discrete math", NULL, 2);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (11, "Theory of computation", NULL, 2);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (12, "Getting started with Python", NULL, 3);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (13, "Basics of HTML and CSS", NULL, 3);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (14, "Basics of javascript", NULL, 3);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (15, "Programming in Biology", NULL, 4);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (16, "Introduction to Programming and Computer Science - Full Course", "https://youtu.be/zOjov-2OZ0E", 5);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (17,NULL, "https://youtu.be/dQw4w9WgXcQ", 6);
+INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (18,NULL, "https://youtu.be/FCMxA3m_Imc", 7);
 
 ------ ProblemaComSolução ------
 INSERT INTO ProblemaComSolucao(idProblema, solucao) VALUES (0, "Just show up");
