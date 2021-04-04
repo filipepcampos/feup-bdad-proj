@@ -35,28 +35,33 @@ CREATE TABLE Utilizador (
 
 
 CREATE TABLE Jogador (
-    id INTEGER PRIMARY KEY REFERENCES Utilizador(id),
+    id INTEGER PRIMARY KEY REFERENCES Utilizador(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
     rating INTEGER CONSTRAINT ratingPositivo CHECK (rating >= 0), -- Derived attribute
     numCompeticoes INTEGER CONSTRAINT numCompeticoesPositivo CHECK (numCompeticoes >= 0) -- Derived attribute
 );
 
 CREATE TABLE Empresa (
-    id INTEGER PRIMARY KEY REFERENCES Utilizador(id),
+    id INTEGER PRIMARY KEY REFERENCES Utilizador(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
     website TEXT
         CONSTRAINT websiteFormato CHECK(website LIKE "%.%"),
     numeroTelefone INTEGER NOT NULL
 );
 
 CREATE TABLE Organizador (
-    id INTEGER PRIMARY KEY REFERENCES Jogador(id),
+    id INTEGER PRIMARY KEY REFERENCES Jogador(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
     pontosContribuicao INTEGER NOT NULL DEFAULT 0
         CONSTRAINT pontosContribuicaoPositivos CHECK (pontosContribuicao >= 0)
 );
 
 CREATE TABLE Mensagem (
     id INTEGER PRIMARY KEY,
-    idUtilizadorRemetente INTEGER REFERENCES Utilizador(id) NOT NULL,
-    idUtilizadorDestinatario INTEGER REFERENCES Utilizador(id) NOT NULL,
+    idUtilizadorRemetente INTEGER NOT NULL REFERENCES Utilizador(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    idUtilizadorDestinatario INTEGER NOT NULL REFERENCES Utilizador(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
     texto TEXT NOT NULL,
     datetime INTEGER NOT NULL 
             CONSTRAINT datetimeNaoFutura CHECK (datetime <= strftime("%s", CURRENT_TIMESTAMP))
@@ -76,7 +81,8 @@ CREATE TABLE OfertaEmprego (
     salario REAL CONSTRAINT salarioPositivo CHECK(salario>=0),
     dataCriacao INTEGER NOT NULL
         CONSTRAINT dataCriacaoNaoFutura CHECK (dataCriacao <= strftime("%s", CURRENT_TIMESTAMP)),
-    idEmpresa INTEGER NOT NULL REFERENCES Empresa(id),
+    idEmpresa INTEGER NOT NULL REFERENCES Empresa(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
     localPais TEXT,
     localCidade TEXT,
     localEndereco TEXT,
@@ -86,13 +92,14 @@ CREATE TABLE OfertaEmprego (
         ((localPais IS NULL)   = (localEndereco IS NULL))
     ),
     FOREIGN KEY(localPais, localCidade, localEndereco) REFERENCES Localizacao(pais,cidade,endereco)
-            ON DELETE SET NULL ON UPDATE SET NULL
+            ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 CREATE TABLE Candidatura(
     idOferta INTEGER REFERENCES OfertaEmprego(id)
-            ON DELETE CASCADE ON UPDATE CASCADE,
-    idJogador INTEGER REFERENCES Jogador(id), 
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    idJogador INTEGER REFERENCES Jogador(id)
+        ON DELETE CASCADE ON UPDATE CASCADE, 
     dataCandidatura INTEGER NOT NULL
         CONSTRAINT dataCandidaturaNaoFutura CHECK (dataCandidatura <= strftime("%s", CURRENT_TIMESTAMP)),
     PRIMARY KEY(idOferta, idJogador)
@@ -112,7 +119,8 @@ CREATE TABLE Competicao(
 );
 
 CREATE TABLE Participacao(
-    idJogador INTEGER REFERENCES Jogador(id),
+    idJogador INTEGER REFERENCES Jogador(id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
     idCompeticao INTEGER REFERENCES Competicao(id)
             ON DELETE CASCADE ON UPDATE CASCADE,
     dataInscricao INTEGER NOT NULL
@@ -124,7 +132,8 @@ CREATE TABLE Participacao(
 );
 
 CREATE TABLE Contribuicao(
-    idOrganizador INTEGER REFERENCES Organizador(id),
+    idOrganizador INTEGER REFERENCES Organizador(id)
+            ON DELETE CASCADE ON UPDATE CASCADE,
     idCompeticao INTEGER REFERENCES Competicao(id)
             ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(idOrganizador, idCompeticao)
@@ -147,8 +156,10 @@ CREATE TABLE Problema (
 );
 
 CREATE TABLE Informacao (
-    idCurso INTEGER REFERENCES Curso(id),
-    idJogador INTEGER REFERENCES Jogador(id),
+    idCurso INTEGER REFERENCES Curso(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE, -- ON DELETE RESTRICT evita perda acidental de notas dos alunos/jogadores do curso
+    idJogador INTEGER REFERENCES Jogador(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     dataInicio INTEGER NOT NULL,
     dataFim INTEGER NOT NULL,
     nota INTEGER CONSTRAINT notaIntervalo CHECK (nota >= 0 AND nota <= 20),
@@ -162,36 +173,46 @@ CREATE TABLE Aula (
     texto TEXT,
     videoURL TEXT
         CONSTRAINT videoURLFormato CHECK(videoURL LIKE "%.%"),
-    idCurso INTEGER REFERENCES Curso(id) NOT NULL,
+    idCurso INTEGER NOT NULL REFERENCES Curso(id)
+        ON DELETE CASCADE ON UPDATE CASCADE, -- Aula não pode existir sem um curso
     CONSTRAINT aulaTemConteudo CHECK(texto IS NOT NULL OR videoURL IS NOT NULL)
 );
 
 CREATE TABLE ProblemaComSolucao (
-    idProblema INTEGER PRIMARY KEY REFERENCES Problema(id),
+    idProblema INTEGER PRIMARY KEY REFERENCES Problema(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     solucao TEXT NOT NULL
 );
 
 CREATE TABLE Desafio (
     id INTEGER PRIMARY KEY,
-    idDesafiador INTEGER REFERENCES Jogador(id) NOT NULL,
-    idDesafiado INTEGER REFERENCES Jogador(id) NOT NULL,
+    idDesafiador INTEGER NOT NULL REFERENCES Jogador(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    idDesafiado INTEGER NOT NULL REFERENCES Jogador(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     descricao TEXT NOT NULL
 );
 
 CREATE TABLE ProblemaCompeticao (
-    idProblema REFERENCES Problema(id),
-    idCompeticao REFERENCES Competicao(id),
+    idProblema REFERENCES Problema(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    idCompeticao REFERENCES Competicao(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(idProblema, idCompeticao)
 );
 
 CREATE TABLE ProblemaAula (
-    idProblema REFERENCES Problema(id),
-    idAula REFERENCES Aula(id),
+    idProblema REFERENCES Problema(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    idAula REFERENCES Aula(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(idProblema, idAula)
 );
 
 CREATE TABLE ProblemaDesafio (
-    idProblema REFERENCES Problema(id),
-	idDesafio REFERENCES Desafio(id),
+    idProblema REFERENCES Problema(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+	idDesafio REFERENCES Desafio(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
 	PRIMARY KEY(idProblema, idDesafio)
 );
