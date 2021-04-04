@@ -14,14 +14,14 @@ def makeEmail(username):
     return username + "@" + random.choice(["gmail.com", "hotmail.com", "outlook.com", "fe.up.pt"])
 
 def makeDate():
-    year = random.choice([str(i) for i in range(2019,2022)])
+    year = random.choice([str(i) for i in range(2019,2021)])
     month = random.choice([str(i+1) for i in range(12)])
     day = random.choice([str(i+1) for i in range(28)])
     h = random.choice([str(i) for i in range(24)])
-    m = random.choice([str(i+1) for i in range(60)])
-    s = random.choice([str(i+1) for i in range(60)])
-    date = f"{year}-{month}-{day} {h}:{m}:{s}"
-    return f"strftime('%s', {date})" 
+    m = random.choice([str(i) for i in range(60)])
+    s = random.choice([str(i) for i in range(60)])
+    date = f"{year.zfill(2)}-{month.zfill(2)}-{day.zfill(2)} {h.zfill(2)}:{m.zfill(2)}:{s.zfill(2)}"
+    return f"strftime('%s', '{date}')" 
     
 
 def main():
@@ -37,7 +37,7 @@ def main():
         uname = makeUsername(name)
         email = makeEmail(uname)
         date = makeDate()
-        print(f"INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES ({i}, {uname}, {name}, {email}, {date});")
+        print(f"INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES ({i}, '{uname}', '{name}', '{email}', {date});")
     
 
 if __name__ == "__main__":
