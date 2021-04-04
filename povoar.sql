@@ -14,7 +14,7 @@ INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (10, 'Anderson
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (11, 'Adrian32', 'Adrian Gouveia Camarinho', 'Adrian32@gmail.com', strftime('%s', '2019-01-03 00:05:00'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (12, 'Henzo32', 'Henzo Lessa Vides', 'Henzo32@hotmail.com', strftime('%s', '2020-04-09 03:29:46'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (13, "yasmin570", "Yasmin Rosa Veloso", "yasmin570@gmail.com", strftime('%s', '2020-10-18 09:09:56'));
-INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (14, 'Pablo424', 'Pablo Alvelos Quintas', 'Pablo424@outlook.com', strftime('%s', '2020-09-03 21:14:11'));
+INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (14, 'mikeG20', 'Miguel Gomes', 'mikeG@fe.up.pt', strftime('%s', '2020-09-03 21:14:11'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (15, 'Haniel164', 'Haniel Teles Faleiro', 'Haniel164@gmail.com', strftime('%s', '2020-01-25 07:47:48'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (16, 'Davide74', 'Davide Bicudo Pais', 'Davide74@hotmail.com', strftime('%s', '2020-09-21 04:29:06'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (17, 'Amelia606', 'Amelia Letras Paredes', 'Amelia606@outlook.com', strftime('%s', '2020-05-25 12:02:41'));
