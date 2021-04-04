@@ -91,6 +91,17 @@ INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto,
 INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (3, 31, 13, "Se possível, 14h na próxima terça em nossa unidade em Campanhã", strftime('%s', '2021-02-09 04:05:18'));
 INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (4, 13, 31, "Combinado. Obrigado pela atenção e pela oportunidade.", strftime('%s','2021-02-09 04:05:50'));
 INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (5, 31, 13, "Obrigado nós Yasmin, tenha um bom dia.", strftime('%s', '2021-02-09 04:06:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (6, 3, 5, "Olá?", strftime('%s', '2021-02-09 04:06:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (7, 5, 3, "Está lá?", strftime('%s', '2021-02-09 04:07:32'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (8, 3, 5, "Não.", strftime('%s', '2021-02-09 04:08:47'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (9,  15, 18, "Knock, knock", strftime('%s', '2021-02-09 04:06:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (10, 18, 15, "Who's there", strftime('%s', '2021-03-13 17:27:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (11, 15, 18, "Atch.", strftime('%s', '2021-03-13 17:28:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (12, 18, 15, "Atch who?", strftime('%s', '2021-03-13 17:29:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (13, 15, 18, "Bless you!", strftime('%s', '2021-03-13 17:30:01'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (14, 22, 17, "Want to earn money doing absolutely nothing!? Click here to found out more! [insert scam link here]", strftime('%s', '2021-04-02 04:06:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (15, 22, 11, "Want to earn money doing absolutely nothing!? Click here to found out more! [insert scam link here]", strftime('%s', '2021-04-02 04:06:21'));
+INSERT INTO Mensagem(id, idUtilizadorRemetente, idUtilizadorDestinatario, texto, datetime) VALUES (16, 22, 7, "Want to earn money doing absolutely nothing!? Click here to found out more! [insert scam link here]", strftime('%s', '2021-04-02 04:06:21'));
 
 
 ------ Localização ------
@@ -115,15 +126,15 @@ INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpre
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
      VALUES (1, 'Software Developer', 'Working here is great!', 50000.0, strftime('%s','2020-11-30'), 31, 'Portugal', 'Coimbra', 'Rua 2');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco)
-     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s','2021-02-05'), 30, 'Portugal', 'Porto', 'Rua 2');
+     VALUES (2, 'Software Developer', '404 Information not found', 79999.1, strftime('%s', '2020-02-09 04:06:21'), 30, 'Portugal', 'Porto', 'Rua 2');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (3, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2021-03-23'), 31, 'Egypt', 'Memphis', 'شارع 1');
+     VALUES (3, 'Junior Backend Developer', 'Required: At least 5 years of Java experience', 75000.80, strftime('%s','2020-03-23'), 31, 'Egypt', 'Memphis', 'شارع 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (4, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2021-02-05'), 33, 'Germany', 'Berlin', 'Straße 1');
+     VALUES (4, 'Senior Software Engineer', 'German Engineering is the best engineering', 79999.1, strftime('%s','2020-02-05'), 33, 'Germany', 'Berlin', 'Straße 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (5, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2021-03-27'), 35, 'United States of America', 'Memphis', 'Street 1');
+     VALUES (5, 'Data Scientist', '[Insert information here]', 100000.0, strftime('%s','2020-03-27'), 35, 'United States of America', 'Memphis', 'Street 1');
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco) 
-     VALUES (6, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2021-03-27'), 34, NULL, NULL, NULL);
+     VALUES (6, 'Remote Frontend Developer', '[Insert information here]', 125000.0, strftime('%s','2020-03-27'), 34, NULL, NULL, NULL);
 
 
 ------ Candidatura ------
