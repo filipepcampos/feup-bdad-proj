@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (0, 'a', 'a',  'a@gmail.com', strftime('%s'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (1, 'b', 'b',  'b@gmail.com', strftime('%s'));
 INSERT INTO Utilizador(id,username,nome,email,ultimoLogin) VALUES (2, 'c', 'c',  'c@gmail.com', strftime('%s'));
