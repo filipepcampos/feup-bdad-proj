@@ -91,6 +91,8 @@ INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premi
     VALUES (4, "Google Code Jam Final", "404 Description not found", strftime('%s',"2021-09-13 16:00:00"), strftime('%s',"2021-09-13 18:00:00"), "$15000");
 -- Other --
 INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
+    VALUES (7, "Facebook Hacker Cup", "Ipsum Lorem", strftime('%s',"2019-05-07 15:00:00"), strftime('%s',"2019-05-07 18:00:00"), "$20000");
+INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
     VALUES (5, "Facebook Hacker Cup", "Ipsum Lorem", strftime('%s',"2021-05-07 15:00:00"), strftime('%s',"2021-05-07 18:00:00"), "$20000");
 INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
     VALUES (6, "Unrated Competition", "[Description goes here]", strftime('%s',"2021-03-27 07:00:00"), strftime('%s',"2021-03-27 09:00:00"), NULL);
@@ -98,34 +100,38 @@ INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premi
 ------ Participação ------
 -- Code Jam --
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 0, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 0, strftime('%s',"2021-03-26 17:59:59"), 4, 0);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 0, strftime('%s',"2021-03-11 15:22:37"), 6, -50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 0, strftime('%s',"2021-03-25 01:00:00"), 5, -35);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 0, strftime('%s',"2021-03-26 17:59:59"), 4, 10);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 0, strftime('%s',"2021-03-11 15:22:37"), 6, 0);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 0, strftime('%s',"2021-03-25 01:00:00"), 5, 5);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 0, strftime('%s',"2021-03-26 09:00:00"), 2, 100);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 0, strftime('%s',"2021-03-26 07:30:00"), 1, 220);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 1, strftime('%s',"2021-03-27 23:00:00"), 1, 300);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 1, strftime('%s',"2021-03-27 23:00:00"), 3, 50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 1, strftime('%s',"2021-03-27 23:00:00"), 4, 0);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 1, strftime('%s',"2021-03-27 23:00:00"), 5, -20);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 1, strftime('%s',"2021-03-27 23:00:00"), 2, 200);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 2, strftime('%s',"2021-03-17 20:00:00"), 2, 300);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 2, strftime('%s',"2021-03-17 20:00:00"), 1, 400);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 2, strftime('%s',"2021-03-17 20:00:00"), 3, -10);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 2, strftime('%s',"2021-03-17 20:00:00"), 4, -50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 3, strftime('%s',"2021-03-23 23:00:00"), 3, -100);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 3, strftime('%s',"2021-03-23 23:00:00"), 2, 400);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 3, strftime('%s',"2021-03-23 23:00:00"), 1, 500);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 4, strftime('%s',"2021-03-26 23:00:00"), 1, 1000);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 4, strftime('%s',"2021-03-26 23:00:00"), 2, 0);
--- Other --
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 5, strftime('%s',"2021-03-06 18:32:22"), 1, 50);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 5, strftime('%s',"2021-03-06 18:32:22"), 2, 25);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 5, strftime('%s',"2021-03-06 18:32:22"), 3, -20);
---
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 1, strftime('%s',"2021-03-27 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 1, strftime('%s',"2021-03-27 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 1, strftime('%s',"2021-03-27 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 1, strftime('%s',"2021-03-27 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 1, strftime('%s',"2021-03-27 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 2, strftime('%s',"2021-03-17 20:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 2, strftime('%s',"2021-03-17 20:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 2, strftime('%s',"2021-03-17 20:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 2, strftime('%s',"2021-03-17 20:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 3, strftime('%s',"2021-03-23 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 3, strftime('%s',"2021-03-23 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 3, strftime('%s',"2021-03-23 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 4, strftime('%s',"2021-03-26 23:00:00"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 4, strftime('%s',"2021-03-26 23:00:00"), NULL, NULL);
+
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 5, strftime('%s',"2021-03-06 18:32:22"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 5, strftime('%s',"2021-03-06 18:32:22"), NULL, NULL);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 5, strftime('%s',"2021-03-06 18:32:22"), NULL, NULL);
+
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 6, strftime('%s',"2021-02-26 18:32:22"), 3, NULL);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 6, strftime('%s',"2021-02-26 12:12:42"), 1, NULL);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (0, 6, strftime('%s',"2021-02-26 15:57:00"), 2, NULL);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 6, strftime('%s',"2021-02-26 07:15:39"), 4, NULL);
+
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 7, strftime('%s',"2019-03-06 18:32:22"), 1, 250);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 7, strftime('%s',"2019-03-02 19:51:42"), 3, 25);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 7, strftime('%s',"2019-03-03 12:32:35"), 2, 100);
 
 ------ Contribuição ------
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 0);
@@ -233,6 +239,8 @@ INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (5, 5);
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (6, 5);
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (7, 6);
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (2, 6);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (5, 7);
+INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (6, 7);
 
 
 ------ ProblemaAula ------

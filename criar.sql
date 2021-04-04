@@ -125,7 +125,7 @@ CREATE TABLE Participacao(
             ON DELETE CASCADE ON UPDATE CASCADE,
     dataInscricao INTEGER NOT NULL
         CONSTRAINT dataInscricaoNaoFutura CHECK (dataInscricao <= strftime("%s", CURRENT_TIMESTAMP)),
-    posicao INTEGER NOT NULL
+    posicao INTEGER
         CONSTRAINT posicaoMaiorQueZero CHECK(posicao >= 1),
     mudancaRating INTEGER,
     PRIMARY KEY(idJogador, idCompeticao) 
