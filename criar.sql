@@ -109,11 +109,11 @@ CREATE TABLE Competicao(
     id INTEGER PRIMARY KEY,
     titulo TEXT NOT NULL,
     descricao TEXT,
-    dificuldadeMedia REAL -- Derived Attribute
+    dificuldadeMedia REAL DEFAULT 0.0 -- Derived Attribute
                     CONSTRAINT dificuldadeMediaIntervalo CHECK(dificuldadeMedia >= 0 AND dificuldadeMedia <= 10),
     datetimeInicio INTEGER NOT NULL,
     datetimeFim INTEGER NOT NULL,
-    numParticipantes INTEGER, -- Derived Attribute
+    numParticipantes INTEGER DEFAULT 0, -- Derived Attribute
     premio TEXT, -- 'Descrição do prémio'
     CONSTRAINT integridadeTemporal CHECK(datetimeFim > datetimeInicio)
 );

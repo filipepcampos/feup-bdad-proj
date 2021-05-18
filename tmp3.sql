@@ -13,9 +13,11 @@
 
 SELECT id, titulo, numAulas, numEstudantes, notaMedia
 FROM Curso
-    JOIN (SELECT count(id) as numAulas, idCurso as id 
-            FROM Aula GROUP BY idCurso)
-        USING (id)
-    JOIN (SELECT count(idJogador) as numEstudantes, avg(nota) as notaMedia, idCurso as id
-            FROM Informacao GROUP BY idCurso)
-        USING (id);
+    JOIN (
+        SELECT count(id) as numAulas, idCurso as id 
+            FROM Aula GROUP BY idCurso
+    ) USING (id)
+    JOIN (
+        SELECT count(idJogador) as numEstudantes, avg(nota) as notaMedia, idCurso as id
+            FROM Informacao GROUP BY idCurso
+    ) USING (id);
