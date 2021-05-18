@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 -- Para cada curso mostrar o número de estudantes, a nota média, o tempo médio que demora a completar (?),
 -- número de aulas e número de problemas / problemas com solução
 --

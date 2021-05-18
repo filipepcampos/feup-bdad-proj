@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 -- Mostrar mensagens num formato facil de ler, isto é, mostrar o username dos utilizadores em vez do id e mostrar a data formatada em vez do valor unixepoch
 
 SELECT usernameRemetente, usernameDestinatario, texto, datetime(Mensagem.datetime, 'unixepoch') as data FROM Mensagem

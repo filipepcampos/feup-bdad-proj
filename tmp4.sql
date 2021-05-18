@@ -11,6 +11,7 @@ FROM Empresa
 		ON (Empresa.id = idEmpresa)
 	JOIN Candidatura
 		ON (OfertaEmprego.id = idOferta)
+    GROUP BY Empresa.id
 	ORDER BY numCandidaturas DESC;
 
-// TODO : THIS IS NOT WORKING
+-- TODO : THIS IS NOT WORKING

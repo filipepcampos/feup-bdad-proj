@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 -- Selecionar número de problemas resolvidos por cada jogador (via competição, desafio ou aula). Nota: Problemas com solução de uma aula não contam para este valor!
 
 DROP VIEW IF EXISTS numProbCompeticao;

@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 -- Motivação: pretendemos incentivar jogadores pouco ativos a envolverem-se mais na comunidade
 -- Todos os jogadores com email @fe.up.pt que não é contribuidor, não apresentou nenhuma candidatura,
 --  que nunca participou numa competição e cuja última data de login seja mais recente que 1 de janeiro 2020

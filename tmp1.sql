@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 --   Mostrar os três melhores Jogadores (baseado no seu rating) que participaram 
 -- em pelo menos 5 competições.
 
