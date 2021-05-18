@@ -1,9 +1,7 @@
 --   Mostrar os três melhores Jogadores (baseado no seu rating) que participaram 
 -- em pelo menos 5 competições.
 
-
 DROP VIEW if EXISTS jogadorView;
-
 CREATE VIEW jogadorView AS
 SELECT * FROM
 (
