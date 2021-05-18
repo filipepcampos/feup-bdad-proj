@@ -7,9 +7,9 @@
 
 SELECT Empresa.id as Empresa, website, count(OfertaEmprego.idEmpresa) as numCandidaturas
 FROM Empresa
-	JOIN OfertaEmprego
+	LEFT JOIN OfertaEmprego
 		ON (Empresa.id = idEmpresa)
-	JOIN Candidatura
+	LEFT JOIN Candidatura
 		ON (OfertaEmprego.id = idOferta)
     GROUP BY Empresa.id
 	ORDER BY numCandidaturas DESC;
