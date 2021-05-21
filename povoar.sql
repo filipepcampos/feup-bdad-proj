@@ -290,25 +290,43 @@ INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (6, "Problem 6",
 INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (7, "Biology is cool", "Biology related programming", 7);
 
 ------ Informação ------
+
+-- [NOTA relativa à querie 2] O jogador 2 participou em todos os cursos, mas não foi aprovado em todos
+
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 0, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 20);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 4, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 17);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 7, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 14);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (0, 2, strftime('%s',"2021-03-23 23:00:00"), strftime('%s',"2021-03-24 23:00:00"), 11);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 0, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 15);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 1, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 15);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 2, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 12);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 3, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 8);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (1, 4, strftime('%s',"2021-02-12 11:00:00"), strftime('%s',"2021-02-23 23:00:00"), 19);
-INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 2, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 0);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 0, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 15);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 2, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 12);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 4, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 17);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 5, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 13);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (2, 6, strftime('%s',"2021-01-12 16:00:00"), strftime('%s',"2021-02-12 16:00:00"), 14);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 0, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 9.5);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 1, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 9.5);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 2, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 8);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 4, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2021-01-12 16:00:00"), 13);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (3, 3, strftime('%s',"2020-12-24 16:00:00"), strftime('%s',"2020-12-25 16:00:00"), 14);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (4, 0, strftime('%s',"2020-08-13 16:00:00"), strftime('%s',"2020-10-24 19:00:00"), 18);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (4, 2, strftime('%s',"2020-08-13 16:00:00"), strftime('%s',"2020-10-24 19:00:00"), 18);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (4, 4, strftime('%s',"2020-08-13 16:00:00"), strftime('%s',"2020-10-24 19:00:00"), 18);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (5, 0, strftime('%s',"2020-05-17 16:00:00"), strftime('%s',"2020-06-17 16:00:00"), 19);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (5, 4, strftime('%s',"2020-05-17 16:00:00"), strftime('%s',"2020-06-17 16:00:00"), 15);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (5, 2, strftime('%s',"2020-05-17 16:00:00"), strftime('%s',"2020-06-17 16:00:00"), 7);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 5, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 11);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 4, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 16);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 0, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 19);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (6, 2, strftime('%s',"2021-02-17 16:00:00"), strftime('%s',"2021-02-26 20:00:00"), 19);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 6, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 19);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 2, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 9);
 INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 3, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 13);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 0, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 12);
+INSERT INTO Informacao(idCurso, idJogador, dataInicio, dataFim, nota) VALUES (7, 4, strftime('%s',"2021-01-17 16:00:00"), strftime('%s',"2021-02-17 16:00:00"), 16);
 
 ------ Aula ------
 INSERT INTO Aula(id, texto, videoURL, idCurso) VALUES (0, "MEST", NULL, 0);
