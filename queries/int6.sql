@@ -2,7 +2,9 @@
 .headers on
 .nullvalue NULL
 
--- Selecionar número de problemas resolvidos por cada jogador (via competição, desafio ou aula). Nota: Problemas com solução de uma aula não contam para este valor!
+-- [Descrição]
+-- Selecionar número de problemas resolvidos por cada jogador (via competição, desafio ou aula). 
+-- Nota: Problemas com solução de uma aula não contam para este valor!
 
 DROP VIEW IF EXISTS numProbCompeticao;
 CREATE VIEW numProbCompeticao
@@ -25,7 +27,7 @@ AS
         WHERE idDesafio = id
     GROUP BY idJogador;
 
-DROP VIEW IF EXISTS numProbAula; -- NOTA: Número de problemas c/ solução não é contabilizado para o total de problemas resolvidos
+DROP VIEW IF EXISTS numProbAula;
 CREATE VIEW numProbAula
 AS
     SELECT idJogador, sum(numProblemasCurso) as numProblemasEmAula

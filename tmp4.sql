@@ -1,8 +1,10 @@
--- Mostrar lista de Empresas ordenadas pela sua procura (Número total de candidaturas a OfertasEmprego criadas por essa empresa) e o rating médio dos jogadores que se candidataram
-
 .mode columns
 .headers on
 .nullvalue NULL
+
+-- [Descrição]
+-- Mostrar lista de Empresas ordenadas pela sua procura (Número total de candidaturas a OfertasEmprego criadas por essa empresa) 
+-- e o rating médio dos jogadores que se candidataram
 
 DROP VIEW if EXISTS jogadorView;
 CREATE VIEW jogadorView AS
@@ -30,4 +32,5 @@ GROUP BY Empresa.id
 ORDER BY numCandidaturas DESC;
 
 
-	
+(Tou a escrever sem ser em comentário para isto crashar ao tentar correr e ser mais difícil de não notar),
+Ainda falta resolver o problema dos DISTINCT

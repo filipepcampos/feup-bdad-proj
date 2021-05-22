@@ -2,6 +2,7 @@
 .headers on
 .nullvalue NULL
 
+-- [Descrição]
 -- Mostrar numero de ofertas para cada (pais, empresa)
 
 SELECT localPais as Pais, nome, count(OfertaEmprego.id) as numOfertas 

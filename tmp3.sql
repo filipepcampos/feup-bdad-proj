@@ -5,9 +5,6 @@
 -- Para cada curso mostrar o número de estudantes, a nota média, o tempo médio que demora a completar (?),
 -- número de aulas e número de problemas / problemas com solução
 --
--- [NOTA]
--- Ainda não tem tempo médio que demora a completar (Parece ser complicado pois as contas de datas tem de ser feitas 'à mão')
--- Tmb ainda não inclui o número de problemas
 --
 -- [YHDASYHBUJASDGGYHBUASDJYHSDAYHASDDJIKSAHNDASUKIDHASHUIDASUDHSNADIAS]
 
@@ -21,3 +18,7 @@ FROM Curso
         SELECT count(idJogador) as numEstudantes, avg(nota) as notaMedia, idCurso as id
             FROM Informacao GROUP BY idCurso
     ) USING (id);
+
+
+(Tou a escrever sem ser em comentário para isto crashar ao tentar correr e ser mais difícil de não notar),
+Ainda não tem o número de problemas / problemas com solução

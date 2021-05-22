@@ -2,9 +2,12 @@
 .headers on
 .nullvalue NULL
 
--- Motivação: pretendemos incentivar jogadores pouco ativos a envolverem-se mais na comunidade
--- Todos os jogadores com email @fe.up.pt que não é contribuidor, não apresentou nenhuma candidatura,
---  que nunca participou numa competição e cuja última data de login seja mais recente que 1 de janeiro 2020
+-- [Descrição]
+-- Pretendemos incentivar jogadores da FEUP (email @fe.up.pt) pouco ativos a envolverem-se mais na comunidade,
+-- tendo no entanto atenção para não selecionar contas inativas desde o início de 2020.
+-- Para isto precisamos de obter todos os jogadores com email @fe.up.pt que não são contribuidores, 
+-- não apresentaram nenhuma candidatura e que nunca participaram numa competição e
+-- cuja última data de login seja mais recente que 1 de janeiro 2020
 
 SELECT Utilizador.id, username, nome, email, datetime(ultimoLogin, 'unixepoch') as ultimoLogin 
 FROM Utilizador
