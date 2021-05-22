@@ -23,7 +23,5 @@ FROM Utilizador
         WHERE nota >= 9.5
         GROUP BY idJogador
     ) ON (id=idJogador)
-    JOIN (
-        SELECT * from cursoMaisRecentePorJogador
-    ) USING(idJogador)
+    JOIN cursoMaisRecentePorJogador USING(idJogador)
 WHERE numCursosCompletados = (SELECT count(id) FROM Curso);
