@@ -1,3 +1,7 @@
+.mode columns
+.headers on
+.nullvalue NULL
+
 -- [Descrição]
 -- Qual o username e nota média de todos os jogadores que concluíram todos os cursos disponíveis
 -- Adicionalmente, também se quer saber qual dos cursos foi mais recentemente terminado por cada um desses jogadores 

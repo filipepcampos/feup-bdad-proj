@@ -2,6 +2,7 @@
 .headers on
 .nullvalue NULL
 
+-- [Descrição]
 -- Para cada curso mostrar o número de estudantes, a nota média
 -- número de aulas e número de problemas / problemas com solução
 
