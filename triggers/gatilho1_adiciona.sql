@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TRIGGER insertOnParticipacao
     BEFORE INSERT ON Participacao
 WHEN NEW.idJogador IN (

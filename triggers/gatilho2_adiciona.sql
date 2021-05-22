@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 CREATE TRIGGER updateDificuldadeMedia
 AFTER INSERT ON ProblemaCompeticao
 BEGIN

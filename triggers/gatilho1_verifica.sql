@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 --Insere a participação de jogadores--
 --Jogadores que estão a participar de uma competição não podem contribuir para a mesma--
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (5, 6);
