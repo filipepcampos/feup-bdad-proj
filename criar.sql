@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS Empresa;
 DROP TABLE IF EXISTS Participacao;
 DROP TABLE IF EXISTS Contribuicao;
 DROP TABLE IF EXISTS ProblemaAula;
+DROP TABLE IF EXISTS ProblemaComSolucaoAula;
 DROP TABLE IF EXISTS ProblemaCompeticao;
 DROP TABLE IF EXISTS ProblemaDesafio;
 DROP TABLE IF EXISTS Competicao;
@@ -207,6 +208,15 @@ CREATE TABLE ProblemaAula (
     idAula REFERENCES Aula(id)
         ON DELETE CASCADE ON UPDATE CASCADE,
     PRIMARY KEY(idProblema, idAula)
+);
+
+-- Adicionado para a 3ª entrega
+CREATE TABLE ProblemaComSolucaoAula (
+    idProblemaComSolucao REFERENCES ProblemaComSolucao(id)
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    idAula REFERENCES Aula(id)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY(idProblemaComSolucao, idAula)
 );
 
 CREATE TABLE ProblemaDesafio (
