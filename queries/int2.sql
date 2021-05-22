@@ -11,8 +11,8 @@ CREATE VIEW numProbCompeticao
 AS
     SELECT idJogador, count(DISTINCT idProblema) as numProblemasCompeticao
     FROM Competicao 
-        JOIN (SELECT idJogador, idCompeticao as id FROM Participacao) USING(id)
-        JOIN (SELECT idProblema, idCompeticao as id FROM ProblemaCompeticao) USING(id)
+        JOIN Participacao ON (id=Participacao.idCompeticao)
+        JOIN ProblemaCompeticao ON (id=ProblemaCompeticao.idCompeticao)
     GROUP BY idJogador;
 
 DROP VIEW IF EXISTS numProbDesafio;
@@ -32,9 +32,7 @@ CREATE VIEW numProbAula
 AS
     SELECT idJogador, sum(numProblemasCurso) as numProblemasEmAula
     FROM Jogador 
-        JOIN
-            (SELECT idJogador, idCurso FROM Informacao) 
-        ON Jogador.id = idJogador
+        JOIN Informacao ON Jogador.id = idJogador
         JOIN (
             SELECT idCurso, count(DISTINCT idProblema) as numProblemasCurso
                     FROM Aula 
@@ -53,9 +51,9 @@ FROM
             ifnull(numProblemasEmAula, 0) as numProblemasEmAula
         FROM
             Jogador
-            LEFT JOIN  (SELECT * FROM numProbCompeticao) AS T1 ON Jogador.id = T1.idJogador
-            LEFT JOIN  (SELECT * FROM numProbDesafio) AS T2 ON Jogador.id = T2.idJogador
-            LEFT JOIN  (SELECT * FROM numProbAula) AS T3 ON Jogador.id = T3.idJogador
+            LEFT JOIN numProbCompeticao ON Jogador.id = numProbCompeticao.idJogador
+            LEFT JOIN numProbDesafio ON Jogador.id = numProbDesafio.idJogador
+            LEFT JOIN numProbAula ON Jogador.id = numProbAula.idJogador
     ) USING (id)
     ORDER BY numProblemasTotal DESC;
 
