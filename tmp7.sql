@@ -26,9 +26,9 @@ FROM jogadorView JOIN (
     SELECT idEmpresa, idJogador
     FROM
         Empresa 
-        JOIN OfertaEmprego ON(idEmpresa=Empresa.id)
-        JOIN Candidatura ON(Candidatura.idOferta=OfertaEmprego.id)
-    GROUP BY idJogador
+        LEFT JOIN OfertaEmprego ON(idEmpresa=Empresa.id)
+        LEFT JOIN Candidatura ON(Candidatura.idOferta=OfertaEmprego.id)
+    GROUP BY idEmpresa, idJogador
 ) ON(jogadorView.id = idJogador)
 GROUP BY idEmpresa;
 select * from empresaInformacaoCandidaturas;
