@@ -26,7 +26,8 @@ INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (23, "Implement 
 INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (24, "Problem 6", "Problem 6", 6);
 INSERT INTO Problema(id, titulo, descricao, dificuldade) VALUES (25, "Biology is cool", "Biology related programming", 7);
 
-
+SELECT * FROM Competicao
+WHERE id IN (15, 16, 17);
 
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (8, 15);
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (9, 15);
@@ -48,3 +49,14 @@ INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (24, 16);
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (25, 16);
 
 INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (20, 17);
+
+SELECT * FROM Competicao
+WHERE id IN (15, 16, 17);
+
+-- Limpar os dados
+DELETE FROM ProblemaCompeticao
+    WHERE idCompeticao IN (15, 16, 17);
+DELETE FROM Competicao
+    WHERE id IN (15, 16, 17);
+DELETE FROM Problema
+    WHERE id >= 8;

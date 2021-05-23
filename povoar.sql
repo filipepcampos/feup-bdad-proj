@@ -138,13 +138,13 @@ INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpre
 
 
 ------ Candidatura ------
-INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 0, strftime('%s',"2019-02-13"));
+INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 0, strftime('%s',"2019-09-13"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 1, strftime('%s',"2019-10-28"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 2, strftime('%s',"2021-02-06"));
-INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 10, strftime('%s',"2019-02-13"));
+INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 10, strftime('%s',"2019-10-13"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 4, strftime('%s',"2019-10-28"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 13, strftime('%s',"2021-02-06"));
-INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 12, strftime('%s',"2019-02-13"));
+INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 12, strftime('%s',"2019-12-13"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 24, strftime('%s',"2019-10-28"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (0, 15, strftime('%s',"2021-02-06"));
 INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (1, 1, strftime('%s',"2020-12-06"));

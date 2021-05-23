@@ -12,7 +12,6 @@ INSERT INTO Organizador(id, pontosContribuicao) VALUES (2, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (3, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (4, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (5, 0);
-
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (10, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (11, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (12, 0);
@@ -32,13 +31,15 @@ INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudanc
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (6, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
 
+
+
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (1, 8);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (2, 9);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (3, 8);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (4, 9);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (5, 8);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 8);
-
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (13, 8);
 
 
 --Insere a contribuição para testar a inserção da participação de jogadores--
@@ -53,6 +54,18 @@ INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudanc
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (9, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
 INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (10, 9, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
 
+
+-- ==============================================================================================
+-- ==============================================================================================
+-- ================== [Parte relevante ao trigger considerado para avaliação] ===================
+-- ==============================================================================================
+-- ==============================================================================================
+
+SELECT * FROM Contribuicao
+WHERE idCompeticao IN (8, 9, 10, 11);
+
+SELECT * FROM Organizador
+WHERE id IN (11,12,13,14,15,16,17,18,19);
 
 --Contribuição de organizadores--
 --Deverá aumentar pontuação de Organizador--
@@ -70,3 +83,9 @@ INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (16, 11);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (17, 9);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (18, 11);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (19, 11);
+
+SELECT * FROM Contribuicao
+WHERE idCompeticao IN (8, 9, 10, 11);
+
+SELECT * FROM Organizador
+WHERE id IN (11,12,13,14,15,16,17,18,19);

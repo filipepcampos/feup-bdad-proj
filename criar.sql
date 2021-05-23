@@ -212,7 +212,7 @@ CREATE TABLE ProblemaAula (
 
 -- Adicionado para a 3ª entrega
 CREATE TABLE ProblemaComSolucaoAula (
-    idProblemaComSolucao REFERENCES ProblemaComSolucao(id)
+    idProblemaComSolucao REFERENCES ProblemaComSolucao(idProblema)
         ON DELETE RESTRICT ON UPDATE CASCADE,
     idAula REFERENCES Aula(id)
         ON DELETE CASCADE ON UPDATE CASCADE,
