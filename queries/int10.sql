@@ -10,10 +10,8 @@
 
 SELECT  username, pontosContribuicao, COUNT(idOrganizador) AS nContribuicoes
 FROM Organizador as A
-    INNER JOIN Contribuicao AS B
-    INNER JOIN Utilizador AS C
-        ON a.id = c.id
-            AND b.idOrganizador = c.id
+    INNER JOIN Contribuicao AS B ON (A.id = B.idOrganizador)
+    INNER JOIN Utilizador AS C ON (A.id = C.id)
 WHERE a.pontosContribuicao >= 0
 GROUP BY username 
 ORDER BY a.pontosContribuicao DESC;
