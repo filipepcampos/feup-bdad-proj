@@ -1,4 +1,5 @@
 PRAGMA foreign_keys = ON;
+BEGIN TRANSACTION;
 
 INSERT INTO OfertaEmprego(id, posicao, informacao, salario, dataCriacao, idEmpresa, localPais, localCidade, localEndereco)
      VALUES (7, 'Front-end developer', 'We need a new page on our website', 1200.0, strftime('%s', '2020-11-01'), 30, 'Germany', 'Berlin', 'Straße 1');
@@ -39,8 +40,4 @@ INSERT INTO Candidatura(idOferta, idJogador, dataCandidatura) VALUES (11, 9, str
 SELECT * from Candidatura
 WHERE idOferta IN (7, 8, 9, 10, 11);
 
--- Limpar os dados inseridos 
-DELETE FROM Candidatura
-WHERE idOferta IN (7, 8, 9, 10, 11);
-DELETE FROM OfertaEmprego
-WHERE id IN (7, 8, 9, 10, 11);
+ROLLBACK;

@@ -1,3 +1,6 @@
+PRAGMA foreign_keys = ON;
+BEGIN TRANSACTION;
+
 INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
     VALUES (8, "Apple Hacker Cup", "Ipsum Lorem", strftime('%s',"2021-05-07 15:00:00"), strftime('%s',"2021-05-07 18:00:00"), "$200000");
 INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
@@ -89,3 +92,5 @@ WHERE idCompeticao IN (8, 9, 10, 11);
 
 SELECT * FROM Organizador
 WHERE id IN (11,12,13,14,15,16,17,18,19);
+
+ROLLBACK;

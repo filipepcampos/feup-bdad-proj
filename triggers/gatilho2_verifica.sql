@@ -1,4 +1,5 @@
 PRAGMA foreign_keys = ON;
+BEGIN TRANSACTION;
 
 INSERT INTO Competicao(id, titulo, descricao, datetimeInicio, datetimeFim, premio)
     VALUES (15, "Github Hacker Cup", "Ipsum Lorem", strftime('%s',"2019-05-07 15:00:00"), strftime('%s',"2019-05-07 18:00:00"), "$20000");
@@ -53,10 +54,4 @@ INSERT INTO ProblemaCompeticao(idProblema, idCompeticao) VALUES (20, 17);
 SELECT * FROM Competicao
 WHERE id IN (15, 16, 17);
 
--- Limpar os dados
-DELETE FROM ProblemaCompeticao
-    WHERE idCompeticao IN (15, 16, 17);
-DELETE FROM Competicao
-    WHERE id IN (15, 16, 17);
-DELETE FROM Problema
-    WHERE id >= 8;
+ROLLBACK;
