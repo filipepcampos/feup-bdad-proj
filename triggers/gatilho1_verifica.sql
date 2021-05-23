@@ -24,27 +24,6 @@ INSERT INTO Organizador(id, pontosContribuicao) VALUES (16, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (18, 0);
 INSERT INTO Organizador(id, pontosContribuicao) VALUES (19, 0);
 
---Insere a participação de jogadores--
---Jogadores que estão a participar de uma competição não podem contribuir para a mesma--
---insertOnContribuicao--
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 9, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 9, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (6, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
-
-
-
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (1, 8);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (2, 9);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (3, 8);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (4, 9);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (5, 8);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 8);
-INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (13, 8);
-
-
 --Insere a contribuição para testar a inserção da participação de jogadores--
 --insertOnParticipacao--
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (7, 8);
@@ -64,15 +43,43 @@ INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudanc
 -- ==============================================================================================
 -- ==============================================================================================
 
+.print "\n\n\n-------- SECÇÃO RELEVANTE PARA AVALIAÇÃO ---------"
+.print "\n\n======== Verificação do RAISE ========="
+
+SELECT * FROM Contribuicao;
+
+--Insere a participação de jogadores--
+--Jogadores que estão a participar de uma competição não podem contribuir para a mesma--
+--insertOnContribuicao--
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (1, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (2, 9, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (3, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (4, 9, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (5, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+INSERT INTO Participacao(idJogador, idCompeticao, dataInscricao, posicao, mudancaRating) VALUES (6, 8, strftime('%s',"2021-03-25 21:30:23"), 3, 30);
+
+
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (1, 8);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (2, 9);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (3, 8);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (4, 9);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (5, 8);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (6, 8);
+INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (13, 8);
+
+.print "\nResultado expectado, 6 erros de RAISE e 1 adição na tabela Contribuição com valor (idOrganizador:13,idCompeticao:8)"
+
+SELECT * FROM Contribuicao;
+
+--Contribuição de organizadores--
+--Deverá aumentar pontuação de Organizador--
+.print "\n\n======== Verificação do aumento de pontos ========="
 SELECT * FROM Contribuicao
 WHERE idCompeticao IN (8, 9, 10, 11);
 
 SELECT * FROM Organizador
 WHERE id IN (11,12,13,14,15,16,17,18,19);
 
---Contribuição de organizadores--
---Deverá aumentar pontuação de Organizador--
---update_pontos_organizador--
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (11, 8);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (11, 9);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (15, 11);
@@ -86,6 +93,8 @@ INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (16, 11);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (17, 9);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (18, 11);
 INSERT INTO Contribuicao(idOrganizador, idCompeticao) VALUES (19, 11);
+
+.print "\nResultado expectado: Novas adições na tabela Contribuição que causam o aumento de pontos de contribuição"
 
 SELECT * FROM Contribuicao
 WHERE idCompeticao IN (8, 9, 10, 11);
