@@ -31,20 +31,16 @@ FROM jogadorView JOIN (
     GROUP BY idEmpresa, idJogador
 ) ON(jogadorView.id = idJogador)
 GROUP BY idEmpresa;
-select * from empresaInformacaoCandidaturas;
 
 
---SELECT Empresa.id as Empresa, website, count(OfertaEmprego.idEmpresa) as numCandidaturas, avg(rating) as ratingMedio
---FROM Empresa
---    LEFT JOIN OfertaEmprego
---	ON (Empresa.id = idEmpresa)
---    LEFT JOIN Candidatura
---        ON (OfertaEmprego.id = idOferta)
---    LEFT JOIN jogadorView
---	ON (jogadorView.id = idJogador)
---GROUP BY Empresa.id
---ORDER BY numCandidaturas DESC;
-
-
-(Tou a escrever sem ser em comentário para isto crashar ao tentar correr e ser mais difícil de não notar),
-Ainda falta resolver o problema dos DISTINCT
+SELECT Empresa.id as Empresa, website, count(OfertaEmprego.idEmpresa) as numCandidaturas, 
+    ifnull(numJogadoresUnicos,0) as numJogadoresUnicos, ifnull(ratingMedio,0.0) as ratingMedio
+FROM Empresa
+    LEFT JOIN OfertaEmprego
+	    ON (Empresa.id = OfertaEmprego.idEmpresa)
+    LEFT JOIN Candidatura
+        ON (OfertaEmprego.id = idOferta)
+    LEFT JOIN empresaInformacaoCandidaturas
+        ON (Empresa.id = empresaInformacaoCandidaturas.idEmpresa)
+GROUP BY Empresa.id
+ORDER BY numCandidaturas DESC;
