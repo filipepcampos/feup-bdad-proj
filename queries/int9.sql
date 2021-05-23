@@ -33,9 +33,11 @@ FROM jogadorView JOIN (
 GROUP BY idEmpresa;
 
 
-SELECT Empresa.id as Empresa, website, count(OfertaEmprego.idEmpresa) as numCandidaturas, 
+SELECT Empresa.id as Empresa, username, website, count(OfertaEmprego.idEmpresa) as numCandidaturas, 
     ifnull(numJogadoresUnicos,0) as numJogadoresUnicos, ifnull(ratingMedio,0.0) as ratingMedio
-FROM Empresa
+FROM
+    Utilizador
+    JOIN Empresa On (Utilizador.id = Empresa.id)
     LEFT JOIN OfertaEmprego
 	    ON (Empresa.id = OfertaEmprego.idEmpresa)
     LEFT JOIN Candidatura
